@@ -1,0 +1,325 @@
+Program Jogo;
+
+var
+repe,resposta,l,c,start,lifeEnemy,lifePlayer,luck,IA,queima:integer;
+player,nomeInimigo: string;
+inimigo: array[1..1 , 1..3] of string;
+myDeck,deckInimigo,deckHades,deckZeus,deckPoseidon: array[1..2 , 1..3] of string;
+//start é a inicialização do jogo 
+// card game com 5 decks e 3 inimigos
+
+
+Begin
+	// Deck de cartas, os decks são inicializados aq
+// coluna 1 nome coluna 2 dano coluna 3 efeitos 
+ 
+	deckHades[1,1]:='Fogo Infernal';
+	deckHades[1,2]:= '10';
+	deckHades[1,3]:='Queimadura';
+	deckHades[2,1]:='Destroço da alma';
+	deckHades[2,2]:= '5';
+	deckZeus[1,1]:='Relampago';
+	deckZeus[1,2]:='11';
+	deckZeus[1,3]:='Eletrocuta';
+	deckZeus[2,1]:='Comedor de casadas';
+	deckZeus[2,2]:='2';
+	deckPoseidon[1,1]:='Tsunami';
+	deckPoseidon[1,2]:='10';
+	deckPoseidon[1,3]:='Afogado';
+	deckPoseidon[2,1]:='Hurricane';
+	deckPoseidon[2,2]:='15';
+	inimigo[1,1]:='Hercules';
+	inimigo[1,2]:='Persefone';
+	//vida 
+	lifeEnemy:=50;
+	lifePlayer:=50;
+//organização
+
+  
+  // inicio do jogo escolhendo deck
+  while (repe<>1000 ) do
+  begin   
+		clrscr;
+		gotoxy(50,1 );
+		writeln('Os Contos da Morte');
+		gotoxy(25, 3);
+		writeln('1 - Inicia aventura') ;
+		gotoxy(75, 3 );
+		writeln('2 - Sair do jogo' ) ;
+		readln(resposta ) ;
+		clrscr;
+		//Aparti desse case, ira selecionar o deck para ir pra batalha
+		case (resposta) of
+			1:begin
+				write('Nome do jogador: ');
+				readln(player);
+				while (repe<>1000) do
+					begin
+					clrscr;
+					writeln(player,', escolha seu deck:');
+					writeln('1 - Hades');
+					writeln('2 - Zeus');
+					writeln('3 - Poseidon');
+					readln(resposta);
+						case (resposta) of
+								1:	begin
+										for l := 1 to 2 do
+											for c := 1 to 3 do 
+												begin
+													myDeck[l,c]:= deckHades[l,c];
+													start:=1;
+													repe:=1000;
+												end;
+									end;
+								2:	begin
+										for l := 1 to 2 do
+											for c := 1 to 3 do 
+												begin
+													myDeck[l,c]:= deckZeus[l,c];
+													start:=1;
+													repe:=1000;
+												end;
+									end;
+								3:	begin
+										for l := 1 to 2 do
+											for c:= 1 to 3 do
+												begin
+													myDeck[l,c]:= deckPoseidon[l,c];
+													start:=1;
+													repe:=1000;
+												end;
+									end;
+								else
+									begin
+										clrscr;
+										writeln('Comando Invalido');
+										delay(1000);
+										writeln('Pressione qualquer tecla para volta');
+										readkey;
+										repe:=1;
+										start:=0;
+									end;
+						end;
+					clrscr;
+					end;	
+			end;
+				//uma das forma de sai do jogo
+			2:begin
+					repe:=1000;
+					start:=0;
+					writeln('Pressione qualquer tecla para finalizar');
+					readkey;
+			end;
+				//caso o usuario digite um comando invalido ele sera mandado para o menu	
+			else
+				begin
+					repe:=0;
+					start:=0;
+					writeln('Comando invalido');
+					writeln('Pressione qualquer tecla para volta ao menu');
+					readkey;
+					
+				end;
+		end;
+		// seleção da batalha    
+		if (start=1) then
+			begin
+				repe:=0;
+				while (repe<>1000) do 
+					begin	
+						clrscr;
+						writeln('Bem vindo a arena de duelo');
+						writeln('Selecione seu inimigo');
+						writeln('1 - ',inimigo[1,1]);
+						writeln('2 - ',inimigo[1,2]);
+						readln(resposta);
+						clrscr;
+							case ( resposta) of
+								1:	begin
+										repe:=1000;
+										nomeInimigo:=inimigo[1,1];
+										writeln('Filho de Zeus e Heroi de Roma, HERCULES');
+										for l := 1 to 2 do
+											for c:= 1 to 3 do
+												deckInimigo[l,c]:=deckZeus[l,c];
+										delay(1000);
+										writeln('A batalha ira começa');
+										delay(2000);
+										writeln('O guerreiro a procura de provação para adentra o olimpo ',player,' desafia o filho do deus dos deuses Hercule');
+										delay(2000);
+										writeln('Aperte qualquer tecla para ver seu deck');
+										readkey;
+										clrscr;
+										//visualizar as cartas
+										for l := 1 to 2 do
+											for c:= 1 to 1 do
+											begin
+												writeln('Cartas do seu deck: ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' ',myDeck[l,c+2]);	
+											end;
+									end;
+								2:	begin
+										repe:=1000;
+										nomeInimigo:=inimigo[1,2];
+										writeln('Filha de Zeus e esposa de Hades, PERSÉFONE');
+										for l := 1 to 2 do
+											for c:= 1 to 3 do
+												deckInimigo[l,c]:=deckHades[l,c];
+										delay(1000);
+										writeln('A batalha ira começa');
+										delay(2000);
+										writeln('O guerreiro a procura de provação para adentra o olimpo ',player,' desafia o filho do deus dos deuses Hercule');
+										delay(2000);
+										writeln('Aperte qualquer tecla para ver seu deck');
+										readkey;
+										clrscr;
+										//visualizar as cartas
+										for l := 1 to 2 do
+											for c:= 1 to 1 do
+											begin
+												writeln('Cartas do seu deck: ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2]);	
+											end;
+									
+									end;
+								else
+									begin
+										writeln('Inimigo não encontrado');
+										delay(1000);
+										writeln('Pressione qualquer tecla para volta');
+										readkey;
+									end;
+							end;
+					end;						
+			//combate, o turno sera feito numa repetição, e a repetição ira acabar quando uma vida chegar a zero.
+			writeln('Teste de sorte para ver quem iniciara a batalha');
+			luck:=1;
+			case(luck) of
+				1:begin
+					writeln(player,' ira começar a batalha');
+					repe:=0;
+					while ( repe<>1000) do
+					begin
+						writeln('Escolha qual carta usara:');
+						for l := 1 to 2 do
+						begin
+							for c:= 1 to 1 do 
+							begin
+								writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito ',myDeck[l,c+2]);	
+							end;
+						end;
+						//resposta= a linha
+						readln(resposta);
+						IA:=2;
+						writeln(player,' usou ',myDeck[resposta,c]);
+						writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
+						delay(2000);
+						if(myDeck[resposta,c+1]>deckInimigo[IA,c+1]) then
+							begin
+								writeln(c);
+								//criar algoritmo do dano, oq eu fiz tem q converter string para integer
+								//lifeEnemy:= (myDeck[resposta,c+1])-lifeEnemy;
+								writeln(myDeck[resposta,c+1],' ',deckInimigo[IA,c+1]);
+								if (myDeck[resposta,c+2]='Queimadura') or (myDeck[resposta,c+2]='Eletrocuta') then
+									//dano extra
+									begin
+										queima:=3;
+										lifeEnemy:= lifeEnemy-queima;
+									end
+								else;
+								if(myDeck[resposta,c+2]='Afogado') then
+									lifeEnemy:= lifeEnemy-5
+								else	
+									writeln('Cartão sem efeito adicional');
+							end
+						else
+							begin
+								//lifePlayer:= StrToInt(deckInimigo[IA,c+1]) - lifePlayer;
+								writeln('inimigo');
+								writeln(myDeck[resposta,c+1],' ',deckInimigo[IA,c+1]);
+								if (deckInimigo[resposta,c+2]='Queimadura') or (deckInimigo[resposta,c+2]='Eletrocuta') then
+									begin	
+										queima:=3;
+										lifePlayer:=lifePlayer-queima;
+									end
+								else;
+								if(deckInimigo[resposta,c+2]='Afogado') then
+									lifePlayer:= lifePlayer-5
+								else
+									writeln('Cartão sem efeito adicional');
+						end;
+								
+								
+								
+						writeln(lifePlayer);
+						writeln(lifeEnemy);
+						writeln(c);	
+						if(lifePlayer<=0) then
+							begin
+								writeln(player,' esta morto');
+								repe:=1000;
+							end;
+						if(lifeEnemy<=0) then
+							begin
+								writeln(nomeInimigo,' esta morto');
+								repe:=1000;
+							end;			
+						end;
+						
+								(*case (resposta) of
+									2:begin
+										//se o dano da carta for maior q a carta do inimigo você q ganha o round 
+										if(myDeck[resposta,c+1]>deckInimigo[IA,c+1]) then
+										begin
+											writeln(c);
+											//criar algoritmo do dano, oq eu fiz tem q converter string para integer
+											//lifeEnemy:= (myDeck[resposta,c+1])-lifeEnemy;
+											writeln(myDeck[resposta,c+1],' ',deckInimigo[IA,c+1]);
+											if (myDeck[resposta,c+2]='Queimadura') or (myDeck[resposta,c+2]='Eletrocuta') then
+												//dano extra
+												begin
+													queima:=3;
+													lifeEnemy:= lifeEnemy-queima;
+												end
+											else;
+											if(myDeck[resposta,c+2]='Afogado') then
+												lifeEnemy:= lifeEnemy-5
+											else	
+													writeln('Cartão sem efeito adicional');
+										end
+										else
+										begin
+											//lifePlayer:= StrToInt(deckInimigo[IA,c+1]) - lifePlayer;
+											writeln('euteste');
+											if (deckInimigo[resposta,c+2]='Queimadura') or (deckInimigo[resposta,c+2]='Eletrocuta') then
+												begin	
+													queima:=3;
+													lifePlayer:=lifePlayer-queima
+												end;
+											if(deckInimigo[resposta,c+2]='Afogado') then
+												lifePlayer:= lifePlayer-5
+											else
+													writeln('Cartão sem efeito adicional');
+
+										end;
+										
+										
+										
+										writeln(lifePlayer);
+										writeln(lifeEnemy);
+										writeln(c);	
+										if(lifePlayer<=0) then
+											begin
+												writeln(player,' esta morto');
+												repe:=1000;
+											end;
+										if(lifeEnemy<=0) then
+											begin
+												writeln(nomeInimigo,' esta morto');
+												repe:=1000;
+											end;			
+									end;*)
+					//end;
+				end;
+			end;
+		end;
+	end;//fim da luta
+End.
