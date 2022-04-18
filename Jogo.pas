@@ -1,7 +1,7 @@
 Program Jogo;
 
 var
-repe,resposta,l,c,start,lifeEnemy,lifePlayer,luck,IA,queima:integer;
+repe,resposta,l,c,start,lifeEnemy,lifePlayer,luck,IA,queimar,danoPlayer,danoInimigo,erro1,erro2: integer;
 player,nomeInimigo: string;
 inimigo: array[1..1 , 1..3] of string;
 myDeck,deckInimigo,deckHades,deckZeus,deckPoseidon: array[1..2 , 1..3] of string;
@@ -9,10 +9,11 @@ myDeck,deckInimigo,deckHades,deckZeus,deckPoseidon: array[1..2 , 1..3] of string
 // card game com 5 decks e 3 inimigos
 
 
+
 Begin
 	// Deck de cartas, os decks são inicializados aq
 // coluna 1 nome coluna 2 dano coluna 3 efeitos 
- 
+	
 	deckHades[1,1]:='Fogo Infernal';
 	deckHades[1,2]:= '10';
 	deckHades[1,3]:='Queimadura';
@@ -34,8 +35,7 @@ Begin
 	lifeEnemy:=50;
 	lifePlayer:=50;
 //organização
-
-  
+randomize; 
   // inicio do jogo escolhendo deck
   while (repe<>1000 ) do
   begin   
@@ -190,11 +190,12 @@ Begin
 							end;
 					end;						
 			//combate, o turno sera feito numa repetição, e a repetição ira acabar quando uma vida chegar a zero.
-			writeln('Teste de sorte para ver quem iniciara a batalha');
-			luck:=1;
-			case(luck) of
-				1:begin
-					writeln(player,' ira começar a batalha');
+			//writeln('Teste de sorte para ver quem iniciara a batalha');
+			
+			//luck:=random(1)+1;
+			//case(luck) of
+				//1:begin
+					//writeln(player,' ira começar a batalha');
 					repe:=0;
 					while ( repe<>1000) do
 					begin
@@ -208,49 +209,49 @@ Begin
 						end;
 						//resposta= a linha
 						readln(resposta);
-						IA:=2;
+						IA:=random(1)+1;
 						writeln(player,' usou ',myDeck[resposta,c]);
 						writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
 						delay(2000);
-						if(myDeck[resposta,c+1]>deckInimigo[IA,c+1]) then
+						//convertendo string para integer, dano se string foi para integer
+						val(myDeck[resposta,c+1],danoPlayer,erro1);
+						val(deckInimigo[IA,c+1],danoInimigo,erro2);
+						writeln(myDeck[resposta,c+1],' ',deckInimigo[IA,c+1]);
+						if(danoPlayer>danoInimigo) then
 							begin
-								writeln(c);
 								//criar algoritmo do dano, oq eu fiz tem q converter string para integer
-								//lifeEnemy:= (myDeck[resposta,c+1])-lifeEnemy;
-								writeln(myDeck[resposta,c+1],' ',deckInimigo[IA,c+1]);
+								lifeEnemy:= lifeEnemy-danoPlayer;
+								
 								if (myDeck[resposta,c+2]='Queimadura') or (myDeck[resposta,c+2]='Eletrocuta') then
 									//dano extra
 									begin
-										queima:=3;
-										lifeEnemy:= lifeEnemy-queima;
+										queimar:=3;
+										lifeEnemy:= lifeEnemy-queimar;
 									end
 								else;
 								if(myDeck[resposta,c+2]='Afogado') then
 									lifeEnemy:= lifeEnemy-5
 								else	
-									writeln('Cartão sem efeito adicional');
-							end
-						else
+									writeln('Carta sem efeito adicional');
+							end;
+						if(danoInimigo>danoPlayer) then
 							begin
-								//lifePlayer:= StrToInt(deckInimigo[IA,c+1]) - lifePlayer;
-								writeln('inimigo');
-								writeln(myDeck[resposta,c+1],' ',deckInimigo[IA,c+1]);
+								lifePlayer:=lifePlayer-danoInimigo;
+								
 								if (deckInimigo[resposta,c+2]='Queimadura') or (deckInimigo[resposta,c+2]='Eletrocuta') then
 									begin	
-										queima:=3;
-										lifePlayer:=lifePlayer-queima;
+										queimar:=3;
+										lifePlayer:=lifePlayer-queimar;
 									end
 								else;
 								if(deckInimigo[resposta,c+2]='Afogado') then
 									lifePlayer:= lifePlayer-5
 								else
-									writeln('Cartão sem efeito adicional');
-						end;
-								
-								
-								
-						writeln(lifePlayer);
-						writeln(lifeEnemy);
+									writeln('Carta inimiga sem efeito adicional');
+						end
+						else	
+						writeln('Vida ', player,lifePlayer);
+						writeln('Vida ',nomeInimigo,lifeEnemy);
 						writeln(c);	
 						if(lifePlayer<=0) then
 							begin
@@ -262,64 +263,9 @@ Begin
 								writeln(nomeInimigo,' esta morto');
 								repe:=1000;
 							end;			
-						end;
-						
-								(*case (resposta) of
-									2:begin
-										//se o dano da carta for maior q a carta do inimigo você q ganha o round 
-										if(myDeck[resposta,c+1]>deckInimigo[IA,c+1]) then
-										begin
-											writeln(c);
-											//criar algoritmo do dano, oq eu fiz tem q converter string para integer
-											//lifeEnemy:= (myDeck[resposta,c+1])-lifeEnemy;
-											writeln(myDeck[resposta,c+1],' ',deckInimigo[IA,c+1]);
-											if (myDeck[resposta,c+2]='Queimadura') or (myDeck[resposta,c+2]='Eletrocuta') then
-												//dano extra
-												begin
-													queima:=3;
-													lifeEnemy:= lifeEnemy-queima;
-												end
-											else;
-											if(myDeck[resposta,c+2]='Afogado') then
-												lifeEnemy:= lifeEnemy-5
-											else	
-													writeln('Cartão sem efeito adicional');
-										end
-										else
-										begin
-											//lifePlayer:= StrToInt(deckInimigo[IA,c+1]) - lifePlayer;
-											writeln('euteste');
-											if (deckInimigo[resposta,c+2]='Queimadura') or (deckInimigo[resposta,c+2]='Eletrocuta') then
-												begin	
-													queima:=3;
-													lifePlayer:=lifePlayer-queima
-												end;
-											if(deckInimigo[resposta,c+2]='Afogado') then
-												lifePlayer:= lifePlayer-5
-											else
-													writeln('Cartão sem efeito adicional');
-
-										end;
-										
-										
-										
-										writeln(lifePlayer);
-										writeln(lifeEnemy);
-										writeln(c);	
-										if(lifePlayer<=0) then
-											begin
-												writeln(player,' esta morto');
-												repe:=1000;
-											end;
-										if(lifeEnemy<=0) then
-											begin
-												writeln(nomeInimigo,' esta morto');
-												repe:=1000;
-											end;			
-									end;*)
-					//end;
-				end;
-			end;
+					end;				
+				//end;
+			//end;
 		end;
 	end;//fim da luta
 End.
