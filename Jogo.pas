@@ -7,9 +7,6 @@ inimigo: array[1..1 , 1..3] of string;
 myDeck,deckInimigo,deckHades,deckZeus,deckPoseidon: array[1..2 , 1..3] of string;
 //start é a inicialização do jogo 
 // card game com 5 decks e 3 inimigos
-
-
-
 Begin
 	// Deck de cartas, os decks são inicializados aq
 // coluna 1 nome coluna 2 dano coluna 3 efeitos 
@@ -34,8 +31,9 @@ Begin
 	//vida 
 	lifeEnemy:=50;
 	lifePlayer:=50;
+	randomize;
 //organização
-randomize; 
+	 
   // inicio do jogo escolhendo deck
   while (repe<>1000 ) do
   begin   
@@ -48,7 +46,7 @@ randomize;
 		writeln('2 - Sair do jogo' ) ;
 		readln(resposta ) ;
 		clrscr;
-		//Aparti desse case, ira selecionar o deck para ir pra batalha
+		//A parti desse case, ira selecionar o deck para ir pra batalha
 		case (resposta) of
 			1:begin
 				write('Nome do jogador: ');
@@ -56,9 +54,13 @@ randomize;
 				while (repe<>1000) do
 					begin
 					clrscr;
+					gotoxy(65,1);
 					writeln(player,', escolha seu deck:');
+					gotoxy(25,2);
 					writeln('1 - Hades');
+					gotoxy(75,2);
 					writeln('2 - Zeus');
+					gotoxy(125,2);
 					writeln('3 - Poseidon');
 					readln(resposta);
 						case (resposta) of
