@@ -5,28 +5,53 @@ repe,resposta,l,c,start,lifeEnemy,lifePlayer,luck,IA,queimar,danoPlayer,danoInim
 player,nomeInimigo: string;
 //inimigo tem q vira um vetor
 inimigo: array[1..1 , 1..3] of string;
-myDeck,deckInimigo,deckHades,deckZeus,deckPoseidon: array[1..2 , 1..3] of string;
+myDeck,deckInimigo,deckHades,deckZeus,deckPoseidon,deckAthena: array[1..4,1..3] of string;
 //start √© a inicializa√ß√£o do jogo 
 // card game com 5 decks e 3 inimigos
 Begin
 // Deck de cartas, os decks s√£o inicializados aq
 // coluna 1 nome coluna 2 dano coluna 3 efeitos 
-	
+	//deck de hades
 	deckHades[1,1]:='Fogo Infernal';
 	deckHades[1,2]:= '10';
 	deckHades[1,3]:='Queimadura';
 	deckHades[2,1]:='Destro√ßo da alma';
 	deckHades[2,2]:= '5';
+	deckHades[3,1]:='Ondas do Aqueronte';
+	deckHades[3,2]:='3';
+	deckHades[3,3]:='Waves';
+	deckHades[4,1]:='Rouba da alma';
+	deckHades[4,2]:='10';
+	deckHades[4,3]:='Roubo de vida';
+	//deck de zeus
 	deckZeus[1,1]:='Relampago';
 	deckZeus[1,2]:='11';
 	deckZeus[1,3]:='Eletrocuta';
-	deckZeus[2,1]:='Comedor de casadas';
-	deckZeus[2,2]:='2';
+	deckZeus[2,1]:='SeduÁ„o';
+	deckZeus[2,2]:='4';
+	deckZeus[2,3]:='Ataque inimigo inv·lido';
+	deckzeus[3,1]:='Soco Rel‚mpado';
+	deckZeus[3,2]:='14';
+	deckZeus[4,1]:='Icor';
+	deckZeus[4,2]:='10';
+	deckZeus[4,3]:='Roubo de vida';
+	//deck de poseidon
 	deckPoseidon[1,1]:='Tsunami';
 	deckPoseidon[1,2]:='10';
 	deckPoseidon[1,3]:='Afogado';
-	deckPoseidon[2,1]:='Hurricane';
-	deckPoseidon[2,2]:='15';
+	deckPoseidon[2,1]:='Maremoto';
+	deckPoseidon[2,2]:='8';
+	deckPoseidon[3,1]:='Amphitrite';
+	deckPoseidon[3,2]:='5';
+	deckPoseidon[4,1]:='Investida de Hipocampos';
+	deckPoseidon[4,2]:='4';
+	deckPoseidon[4,3]:='Waves';
+	//deck de Athena
+	deckAthena[1,1]:=''; 
+	
+	
+	
+	
 	inimigo[1,1]:='Hercules';
 	inimigo[1,2]:='Persefone';
 	//vida 
@@ -39,11 +64,11 @@ Begin
   while (repe<>1000 ) do
   begin   
 		clrscr;
-		gotoxy(50,1 );
+		gotoxy(50,1);
 		writeln('Os Contos da Morte');
-		gotoxy(25, 3);
+		gotoxy(25,3);
 		writeln('1 - Inicia aventura') ;
-		gotoxy(75, 3 );
+		gotoxy(75,3);
 		writeln('2 - Sair do jogo' ) ;
 		readln(resposta ) ;
 		clrscr;
@@ -146,7 +171,7 @@ Begin
 											for c:= 1 to 3 do
 												deckInimigo[l,c]:=deckZeus[l,c];
 										delay(1000);
-										writeln('A batalha ira come√ßa');
+										writeln('A batalha ira comeÁar');
 										delay(2000);
 										writeln('O guerreiro a procura de prova√ß√£o para adentra o olimpo ',player,' desafia o filho do deus dos deuses Hercule');
 										delay(2000);
@@ -212,7 +237,7 @@ Begin
 						end;
 						//resposta= a linha
 						readln(resposta);
-						IA:=random(1)+1;
+						IA:=random(2)+1;
 						writeln(player,' usou ',myDeck[resposta,c]);
 						writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
 						delay(2000);
@@ -223,8 +248,7 @@ Begin
 						if(danoPlayer>danoInimigo) then
 							begin
 								//criar algoritmo do dano, oq eu fiz tem q converter string para integer
-								lifeEnemy:= lifeEnemy-danoPlayer;
-								
+								lifeEnemy:= lifeEnemy-danoPlayer;	
 								if (myDeck[resposta,c+2]='Queimadura') or (myDeck[resposta,c+2]='Eletrocuta') then
 									//dano extra
 									begin
@@ -251,19 +275,19 @@ Begin
 									lifePlayer:= lifePlayer-5
 								else
 									writeln('Carta inimiga sem efeito adicional');
-						end
-						else	
-						writeln('Vida ', player,lifePlayer);
-						writeln('Vida ',nomeInimigo,lifeEnemy);
+						end;
+						
+						writeln('Vida ', player,' ',lifePlayer);
+						writeln('Vida ',nomeInimigo,' ',lifeEnemy);
 						writeln(c);	
 						if(lifePlayer<=0) then
 							begin
-								writeln(player,' esta morto');
+								writeln(player,' est· morto');
 								repe:=1000;
 							end;
 						if(lifeEnemy<=0) then
 							begin
-								writeln(nomeInimigo,' esta morto');
+								writeln(nomeInimigo,' est· morto');
 								repe:=1000;
 							end;			
 					end;				
