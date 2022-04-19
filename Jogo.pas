@@ -41,13 +41,21 @@ Begin
 	deckPoseidon[1,3]:='Afogado';
 	deckPoseidon[2,1]:='Maremoto';
 	deckPoseidon[2,2]:='8';
-	deckPoseidon[3,1]:='Amphitrite';
-	deckPoseidon[3,2]:='5';
+	deckPoseidon[3,1]:='Água pura';
+	deckPoseidon[3,2]:='10';
+	deckPoseidon[3,3]:='Roubo de Vida'
 	deckPoseidon[4,1]:='Investida de Hipocampos';
 	deckPoseidon[4,2]:='4';
 	deckPoseidon[4,3]:='Waves';
 	//deck de Athena
-	deckAthena[1,1]:=''; 
+	deckAthena[1,1]:='Escudo Aegis';
+	deckAthena[1,3]:='Refletir todos os ataques';
+	deckAthena[2,1]:='Falange';
+	deckAthena[2,2]:='6';
+	deckAthena[2,3]:='Waves';
+	deckAthena[3,1]:='Maldição de Athena';
+	deckAthena[3,2]:='8';
+	deckAthena[4,1]:=''; 
 	
 	
 	
