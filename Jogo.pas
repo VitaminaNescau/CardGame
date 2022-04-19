@@ -3,12 +3,13 @@ Program Jogo;
 var
 repe,resposta,l,c,start,lifeEnemy,lifePlayer,luck,IA,queimar,danoPlayer,danoInimigo,erro1,erro2: integer;
 player,nomeInimigo: string;
+//inimigo tem q vira um vetor
 inimigo: array[1..1 , 1..3] of string;
 myDeck,deckInimigo,deckHades,deckZeus,deckPoseidon: array[1..2 , 1..3] of string;
 //start é a inicialização do jogo 
 // card game com 5 decks e 3 inimigos
 Begin
-	// Deck de cartas, os decks são inicializados aq
+// Deck de cartas, os decks são inicializados aq
 // coluna 1 nome coluna 2 dano coluna 3 efeitos 
 	
 	deckHades[1,1]:='Fogo Infernal';
