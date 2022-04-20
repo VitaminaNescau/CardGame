@@ -1,7 +1,7 @@
 Program Jogo;
 label menu;
 	var
-	repe,resposta,l,c,start,lifeEnemy,lifePlayer,luck,IA,queimar,danoPlayer,danoInimigo,erro1,erro2: integer;
+	repe,resposta,l,c,start,lifeEnemy,lifePlayer,luck,IA,danoPlayer,danoInimigo,erro1,erro2: integer;
 	player1,player2,nomeInimigo: string;
 	//inimigo tem q vira um vetor
 	inimigo: array[1..5] of string;
@@ -83,6 +83,8 @@ end;
 
 //falta dados em dano
 Procedure Dano;
+	var
+	waves,queimar:integer;
 	Begin
 	  	val(myDeck[resposta,c+1],danoPlayer,erro1);
 		val(deckInimigo[IA,c+1],danoInimigo,erro2);
@@ -96,17 +98,21 @@ Procedure Dano;
 						queimar:=3;
 						lifeEnemy:= lifeEnemy-queimar;
 					end;
+				
 				if(myDeck[resposta,c+2]='Afogado') then
 					lifeEnemy:= lifeEnemy-5;
-			
+				
 				if(myDeck[resposta,c+2]='Roubo de vida') then
 					begin
 						lifeEnemy:= lifeEnemy-danoPlayer;
 						lifePlayer:= lifePlayer+danoPlayer;
-					end
+					end;
 				
-				else	
-					writeln('Carta sem efeito adicional');
+				if (myDeck[resposta,c+2]='Waves') then
+					begin
+						waves:=random(5)+1;
+						lifeEnemy:= lifeEnemy-(danoPlayer*waves);
+					end;
 			end;
 		if(danoInimigo>danoPlayer) then
 			begin
@@ -117,17 +123,22 @@ Procedure Dano;
 						queimar:=3;
 						lifePlayer:=lifePlayer-queimar;
 					end;
+				
 				if(deckInimigo[IA,c+2]='Afogado') then
 					lifePlayer:= lifePlayer-5;
+				
 				if(deckInimigo[IA,c+2]='Roubo de vida') then
 					begin
 						lifePlayer:= lifePlayer-danoInimigo;
 						lifeEnemy:= lifeEnemy+danoInimigo;
-					end
+					end;
 				
-				else
-					writeln('Carta inimiga sem efeito adicional');
-		end; 
+				if (deckInimigo[IA,c+2]='Waves') then
+					begin
+						waves:=random(5)+1;
+						lifePlayer:= lifePlayer-(danoPlayer*waves);
+					end;
+			end; 
 End;
 
 
@@ -234,7 +245,12 @@ Begin
 			end;
 			2:{goto historia};
 			3:start:=3;
-				//uma das forma de sai do jogo
+			//uma das forma de sai do jogo
+			4:begin
+				writeln('Ajuda');
+				writeln('1 - Como jogar?');
+				writeln();
+			end;
 			5:begin
 					repe:=1000;
 					start:=0;
