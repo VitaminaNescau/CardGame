@@ -5,7 +5,7 @@ label menu;
 	player1,player2,nomeInimigo: string;
 	//inimigo tem q vira um vetor
 	inimigo: array[1..5] of string;
-	myDeck,deckInimigo,deckHades,deckZeus,deckPoseidon,deckAthena: array[1..4,1..3] of string;
+	myDeck,deckInimigo,deckPlayer1,deckPlayer2,deckHades,deckZeus,deckPoseidon,deckAthena: array[1..4,1..3] of string;
 	//start Ã© a inicializaÃ§Ã£o do jogo 
 	// card game com 5 decks e 3 inimigos
 
@@ -80,9 +80,8 @@ begin
 	end;
 end;
 
-
 //falta dados em dano
-Procedure Dano;
+Procedure DanoPVE;
 	var
 	waves,queimar:integer;
 	Begin
@@ -140,12 +139,6 @@ Procedure Dano;
 					end;
 			end; 
 End;
-
-
-
-
-
-
 
 Begin
 	// Deck de cartas, os decks sÃ£o inicializados nessa aba
@@ -332,7 +325,7 @@ Begin
 												writeln(player1,' usou ',myDeck[resposta,c]);
 												writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
 												delay(2000);
-												Dano;
+												DanoPVE;
 												writeln('Vida ', player1,' ',lifePlayer);
 												writeln('Vida ',nomeInimigo,' ',lifeEnemy);												
 												if(lifePlayer<=0) then
@@ -353,15 +346,33 @@ Begin
 								end;	
 								//PVP
 								2:begin
-										
+									writeln('Nome do jogador 1');
+									readln(player1);
+									deck;
+									for l := 1 to 4 do
+										for c := 1 to 3 do
+										begin
+											deckPlayer1[l,c]:=myDeck[l,c];
+										end;
+									writeln('Nome do jogador 2');
+									readln(player2);
+									deck;
+									for l := 1 to 4 do
+										for c := 1 to 3 do
+										begin
+											deckPlayer2[l,c]:=myDeck[l,c];	
+										end;
+								
+									
+												
 								end;
 								3:goto menu
 								else
 								begin
-											writeln('Opção não encontrado');
-											delay(1000);
-											writeln('Pressione qualquer tecla para volta');
-											readkey;
+									writeln('Opção não encontrado');
+									delay(1000);
+									writeln('Pressione qualquer tecla para volta');
+									readkey;
 								end;
 							end;																																		
 						end;
