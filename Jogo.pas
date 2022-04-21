@@ -79,12 +79,41 @@ begin
 			end;		
 		end;
 end;
+procedure CombatePvE;
+begin
+	nomeInimigo:=inimigo[resposta];
+	for l := 1 to 4 do
+		for c:= 1 to 3 do
+			if (nomeInimigo='Hercules') then	
+				deckInimigo[l,c]:=deckZeus[l,c];
+			if (nomeInimigo='Persefone') then
+				deckInimigo[l,c]:=deckHades[l,c];
+			if (nomeInimigo='Perseu') then
+				deckInimigo[l,c]:=deckPoseidon[l,c];
+	writeln(nomeInimigo,' está diante ',player1,' para o duelo');
+	repe:=0;
+	while(repe<>1000) do
+	begin
+		clrscr;
+		writeln('Escolha qual carta usara:');
+		for l := 1 to 4 do													
+			for c:= 1 to 1 do 
+				begin
+					writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2]);	
+				end;
+		readln(resposta);
+		IA:=random(4)+1;
+		writeln(player1,' usou ',myDeck[resposta,c]);
+		writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
+		delay(2000);
+	end;
+end;
 //falta dados em dano
-Procedure DanoPVE;
+Procedure DanoPvE;
 	var
 	
 	danoPlayer1,danoInimigo,waves,queimar:integer;
-	Begin
+Begin
 		
 	  	val(myDeck[resposta,c+1],danoPlayer1,erro1);
 		val(deckInimigo[IA,c+1],danoInimigo,erro2);
@@ -140,100 +169,100 @@ Procedure DanoPVE;
 					end;
 			end; 
 End;
-procedure DanoPVP;
+procedure DanoPvP;
 	var
 	danoPlayer1,danoPlayer2,waves,queimar:integer;
-	Begin
+Begin
 		
-	  	val(deckPlayer1[respostaPlayer1,c+1],danoPlayer1,erro1);
-		val(deckPlayer2[respostaPlayer2,c+1],danoPlayer2,erro2);
-		if(danoPlayer1>danoPlayer2) then
-			begin
-				lifePlayer2:= lifePlayer2-danoPlayer1;	
-				if (deckPlayer1[respostaPlayer1,c+2]='Queimadura') or (deckPlayer1[respostaPlayer1,c+2]='Eletrocuta') then
-					//dano extra
-					begin
-						queimar:=3;
-						lifePlayer2:= lifePlayer1-queimar;
-						if (deckPlayer1[respostaPlayer1,c+2]='Queimadura')  then
-							writeln('Efeito de queimadura ativo.');
-						if (deckPlayer1[respostaPlayer1,c+2]='Eletrocuta')  then
-							writeln('Efeito de Eletrocuta ativo.');		
-					end;
-				
-				if(deckPlayer1[respostaPlayer1,c+2]='Afogado') then
-					begin
-						lifePlayer2:= lifePlayer2-5;
-						writeln('Efeito de Afogamento ativo');
-					end;
-					
-
-				
-				if(deckPlayer1[respostaPlayer1,c+2]='Roubo de vida') then
-					begin
-						lifePlayer2:= lifePlayer2-danoPlayer1;
-						lifePlayer1:= lifePlayer1+danoPlayer1;
-						writeln(deckPlayer1[respostaPlayer1,c+2],' feito com sucesso.');
-					end;
-				
-				if (deckPlayer1[respostaPlayer1,c+2]='Waves') then
-					begin
-						waves:=random(5)+1;
-						lifePlayer2:= lifePlayer2-(danoPlayer1*waves);
-						writeln('Efeito de waves ativo');
-						writeln('Dano de waves multiplicado em ',waves);
-					end;
-				if (deckPlayer1[respostaPlayer1,c+2]='Refletir todos os ataques') then
-					begin
-						danoPlayer1:=danoPlayer2;
-						lifePlayer2:=lifePlayer2-danoPlayer1;
-					end;
-					
+	val(deckPlayer1[respostaPlayer1,c+1],danoPlayer1,erro1);
+	val(deckPlayer2[respostaPlayer2,c+1],danoPlayer2,erro2);
+	if(danoPlayer1>danoPlayer2) then
+		begin
+			lifePlayer2:= lifePlayer2-danoPlayer1;	
+			if (deckPlayer1[respostaPlayer1,c+2]='Queimadura') or (deckPlayer1[respostaPlayer1,c+2]='Eletrocuta') then
+				//dano extra
+				begin
+					queimar:=3;
+					lifePlayer2:= lifePlayer1-queimar;
+					if (deckPlayer1[respostaPlayer1,c+2]='Queimadura')  then
+						writeln('Efeito de queimadura ativo.');
+					if (deckPlayer1[respostaPlayer1,c+2]='Eletrocuta')  then
+						writeln('Efeito de Eletrocuta ativo.');		
+				end;
 			
-			
-			end;
-
-
-		if(danoPlayer2>danoPlayer1) then
-			begin
-				lifePlayer1:=lifePlayer1-danoPlayer2;
-				
-				if (deckPlayer2[respostaPlayer2,c+2]='Queimadura') or (deckPlayer2[respostaPlayer2,c+2]='Eletrocuta') then
-					begin	
-						queimar:=3;
-						lifePlayer1:=lifePlayer1-queimar;
-						if (deckPlayer1[respostaPlayer1,c+2]='Queimadura')  then
-							writeln('Efeito de queimadura ativo.');
-						if (deckPlayer1[respostaPlayer1,c+2]='Eletrocuta')  then
-							writeln('Efeito de Eletrocuta ativo.');	
-					end;
-				
-				if(deckPlayer2[respostaPlayer2,c+2]='Afogado') then
-					lifePlayer1:= lifePlayer1-5;
+			if(deckPlayer1[respostaPlayer1,c+2]='Afogado') then
+				begin
+					lifePlayer2:= lifePlayer2-5;
 					writeln('Efeito de Afogamento ativo');
-				if(deckPlayer2[respostaPlayer2,c+2]='Roubo de vida') then
-					begin
-						lifePlayer1:= lifePlayer1-danoPlayer2;
-						lifePlayer2:= lifePlayer2+danoPlayer2;
-						writeln(deckPlayer2[respostaPlayer2,c+2],' feito com sucesso.');
-					end;
+				end;
 				
-				if (deckPlayer2[respostaPlayer2,c+2]='Waves') then
-					begin
-						waves:=random(5)+1;
-						lifePlayer1:= lifePlayer1-(danoPlayer2*waves);
-						writeln('Efeito de waves ativo');
-						writeln('Dano de waves multiplicado em ',waves);
-					end;
-				if (deckPlayer2[respostaPlayer1,c+2]='Refletir todos os ataques') then
-					begin
-						danoPlayer2:=danoPlayer1;
-						lifePlayer1:=lifePlayer1 - danoPlayer2;
-					end;													
-			end; 
+
+			
+			if(deckPlayer1[respostaPlayer1,c+2]='Roubo de vida') then
+				begin
+					lifePlayer2:= lifePlayer2-danoPlayer1;
+					lifePlayer1:= lifePlayer1+danoPlayer1;
+					writeln(deckPlayer1[respostaPlayer1,c+2],' feito com sucesso.');
+				end;
+			
+			if (deckPlayer1[respostaPlayer1,c+2]='Waves') then
+				begin
+					waves:=random(5)+1;
+					lifePlayer2:= lifePlayer2-(danoPlayer1*waves);
+					writeln('Efeito de waves ativo');
+					writeln('Dano de waves multiplicado em ',waves);
+				end;
+			if (deckPlayer1[respostaPlayer1,c+2]='Refletir todos os ataques') then
+				begin
+					danoPlayer1:=danoPlayer2;
+					lifePlayer2:=lifePlayer2-danoPlayer1;
+				end;
+				
+		
+		
+		end;
 
 
-	end;
+	if(danoPlayer2>danoPlayer1) then
+		begin
+			lifePlayer1:=lifePlayer1-danoPlayer2;
+			
+			if (deckPlayer2[respostaPlayer2,c+2]='Queimadura') or (deckPlayer2[respostaPlayer2,c+2]='Eletrocuta') then
+				begin	
+					queimar:=3;
+					lifePlayer1:=lifePlayer1-queimar;
+					if (deckPlayer1[respostaPlayer1,c+2]='Queimadura')  then
+						writeln('Efeito de queimadura ativo.');
+					if (deckPlayer1[respostaPlayer1,c+2]='Eletrocuta')  then
+						writeln('Efeito de Eletrocuta ativo.');	
+				end;
+			
+			if(deckPlayer2[respostaPlayer2,c+2]='Afogado') then
+				lifePlayer1:= lifePlayer1-5;
+				writeln('Efeito de Afogamento ativo');
+			if(deckPlayer2[respostaPlayer2,c+2]='Roubo de vida') then
+				begin
+					lifePlayer1:= lifePlayer1-danoPlayer2;
+					lifePlayer2:= lifePlayer2+danoPlayer2;
+					writeln(deckPlayer2[respostaPlayer2,c+2],' feito com sucesso.');
+				end;
+			
+			if (deckPlayer2[respostaPlayer2,c+2]='Waves') then
+				begin
+					waves:=random(5)+1;
+					lifePlayer1:= lifePlayer1-(danoPlayer2*waves);
+					writeln('Efeito de waves ativo');
+					writeln('Dano de waves multiplicado em ',waves);
+				end;
+			if (deckPlayer2[respostaPlayer1,c+2]='Refletir todos os ataques') then
+				begin
+					danoPlayer2:=danoPlayer1;
+					lifePlayer1:=lifePlayer1 - danoPlayer2;
+				end;													
+		end; 
+
+
+end;
 Begin
 	// Deck de cartas, os decks sÃ£o inicializados nessa aba
 		// coluna 1 nome coluna 2 dano coluna 3 efeitos 
@@ -397,46 +426,105 @@ Begin
 								clrscr;
 								case (resposta) of
 									1:begin
-
-										nomeInimigo:=inimigo[resposta];
-										for l := 1 to 4 do
-											for c:= 1 to 3 do
-												deckInimigo[l,c]:=deckZeus[l,c];
-										writeln(nomeInimigo,' está diante ',player1,' para o duelo');
-										//visualizar as cartas
-										repe:=0;
-										while(repe<>1000) do
-										begin
-											clrscr;
-											writeln('Escolha qual carta usara:');
-											for l := 1 to 4 do													
-												for c:= 1 to 1 do 
-													begin
-														writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2]);	
-													end;
-											readln(resposta);
-											IA:=random(4)+1;
-											writeln(player1,' usou ',myDeck[resposta,c]);
-											writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
-											delay(2000);
-											DanoPVE;
-											clrscr;
-											writeln('Vida: ', player1,'/',lifePlayer1);
-											writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
-											if(lifePlayer1<=0) then
-												begin
-													writeln(player1,' está morto');
-													repe:=1000;
-												end;
-											if(lifeEnemy<=0) then
-												begin
-													writeln(nomeInimigo,' está morto');
-													repe:=1000;
-												end;						
-											readkey;
-											clrscr;
-										end;
-									end;								
+										CombatePvE;									
+										DanoPVE;
+										clrscr;
+										writeln('Vida: ', player1,'/',lifePlayer1);
+										writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+										if(lifePlayer1<=0) then
+											begin
+												writeln(player1,' está morto');
+												repe:=1000;
+											end;
+										if(lifeEnemy<=0) then
+											begin
+												writeln(nomeInimigo,' está morto');
+												repe:=1000;
+											end;						
+										readkey;
+										clrscr;
+									
+									end;
+									2:begin
+										CombatePvE;									
+										DanoPVE;
+										clrscr;
+										writeln('Vida: ', player1,'/',lifePlayer1);
+										writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+										if(lifePlayer1<=0) then
+											begin
+												writeln(player1,' está morto');
+												repe:=1000;
+											end;
+										if(lifeEnemy<=0) then
+											begin
+												writeln(nomeInimigo,' está morto');
+												repe:=1000;
+											end;						
+										readkey;
+										clrscr;
+									
+									end;
+									3:begin
+										CombatePvE;									
+										DanoPVE;
+										clrscr;
+										writeln('Vida: ', player1,'/',lifePlayer1);
+										writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+										if(lifePlayer1<=0) then
+											begin
+												writeln(player1,' está morto');
+												repe:=1000;
+											end;
+										if(lifeEnemy<=0) then
+											begin
+												writeln(nomeInimigo,' está morto');
+												repe:=1000;
+											end;						
+										readkey;
+										clrscr;
+									
+									end;
+									4:begin
+										CombatePvE;									
+										DanoPVE;
+										clrscr;
+										writeln('Vida: ', player1,'/',lifePlayer1);
+										writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+										if(lifePlayer1<=0) then
+											begin
+												writeln(player1,' está morto');
+												repe:=1000;
+											end;
+										if(lifeEnemy<=0) then
+											begin
+												writeln(nomeInimigo,' está morto');
+												repe:=1000;
+											end;						
+										readkey;
+										clrscr;
+									
+									end;
+									5:begin
+										CombatePvE;									
+										DanoPVE;
+										clrscr;
+										writeln('Vida: ', player1,'/',lifePlayer1);
+										writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+										if(lifePlayer1<=0) then
+											begin
+												writeln(player1,' está morto');
+												repe:=1000;
+											end;
+										if(lifeEnemy<=0) then
+											begin
+												writeln(nomeInimigo,' está morto');
+												repe:=1000;
+											end;						
+										readkey;
+										clrscr;
+									
+									end; 
 																		
 								end;
 							end;	
