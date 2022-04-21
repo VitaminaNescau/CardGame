@@ -145,9 +145,8 @@ procedure DanoPVP;
 	danoPlayer1,danoPlayer2,waves,queimar:integer;
 	Begin
 		
-	  val(deckPlayer1[respostaPlayer1,c+1],danoPlayer1,erro1);
+	  	val(deckPlayer1[respostaPlayer1,c+1],danoPlayer1,erro1);
 		val(deckPlayer2[respostaPlayer2,c+1],danoPlayer2,erro2);
-		writeln(myDeck[resposta,c+1],' ',deckInimigo[IA,c+1]);
 		if(danoPlayer1>danoPlayer2) then
 			begin
 				lifePlayer2:= lifePlayer2-danoPlayer1;	
@@ -156,23 +155,45 @@ procedure DanoPVP;
 					begin
 						queimar:=3;
 						lifePlayer2:= lifePlayer1-queimar;
+						if (deckPlayer1[respostaPlayer1,c+2]='Queimadura')  then
+							writeln('Efeito de queimadura ativo.');
+						if (deckPlayer1[respostaPlayer1,c+2]='Eletrocuta')  then
+							writeln('Efeito de Eletrocuta ativo.');		
 					end;
 				
 				if(deckPlayer1[respostaPlayer1,c+2]='Afogado') then
-					lifePlayer2:= lifePlayer2-5;
+					begin
+						lifePlayer2:= lifePlayer2-5;
+						writeln('Efeito de Afogamento ativo');
+					end;
+					
+
 				
 				if(deckPlayer1[respostaPlayer1,c+2]='Roubo de vida') then
 					begin
 						lifePlayer2:= lifePlayer2-danoPlayer1;
 						lifePlayer1:= lifePlayer1+danoPlayer1;
+						writeln(deckPlayer1[respostaPlayer1,c+2],' feito com sucesso.');
 					end;
 				
 				if (deckPlayer1[respostaPlayer1,c+2]='Waves') then
 					begin
 						waves:=random(5)+1;
 						lifePlayer2:= lifePlayer2-(danoPlayer1*waves);
+						writeln('Efeito de waves ativo');
+						writeln('Dano de waves multiplicado em ',waves);
 					end;
+				if (deckPlayer1[respostaPlayer1,c+2]='Refletir todos os ataques') then
+					begin
+						danoPlayer1:=danoPlayer2;
+						lifePlayer2:=lifePlayer2-danoPlayer1;
+					end;
+					
+			
+			
 			end;
+
+
 		if(danoPlayer2>danoPlayer1) then
 			begin
 				lifePlayer1:=lifePlayer1-danoPlayer2;
@@ -181,30 +202,44 @@ procedure DanoPVP;
 					begin	
 						queimar:=3;
 						lifePlayer1:=lifePlayer1-queimar;
+						if (deckPlayer1[respostaPlayer1,c+2]='Queimadura')  then
+							writeln('Efeito de queimadura ativo.');
+						if (deckPlayer1[respostaPlayer1,c+2]='Eletrocuta')  then
+							writeln('Efeito de Eletrocuta ativo.');	
 					end;
 				
 				if(deckPlayer2[respostaPlayer2,c+2]='Afogado') then
 					lifePlayer1:= lifePlayer1-5;
-				
+					writeln('Efeito de Afogamento ativo');
 				if(deckPlayer2[respostaPlayer2,c+2]='Roubo de vida') then
 					begin
 						lifePlayer1:= lifePlayer1-danoPlayer2;
 						lifePlayer2:= lifePlayer2+danoPlayer2;
+						writeln(deckPlayer2[respostaPlayer2,c+2],' feito com sucesso.');
 					end;
 				
 				if (deckPlayer2[respostaPlayer2,c+2]='Waves') then
 					begin
 						waves:=random(5)+1;
 						lifePlayer1:= lifePlayer1-(danoPlayer2*waves);
+						writeln('Efeito de waves ativo');
+						writeln('Dano de waves multiplicado em ',waves);
 					end;
+				if (deckPlayer2[respostaPlayer1,c+2]='Refletir todos os ataques') then
+					begin
+						danoPlayer2:=danoPlayer1;
+						lifePlayer1:=lifePlayer1 - danoPlayer2;
+					end;													
 			end; 
+
+
 	end;
 Begin
 	// Deck de cartas, os decks sÃ£o inicializados nessa aba
 		// coluna 1 nome coluna 2 dano coluna 3 efeitos 
 		//deck de hades
 		deckHades[1,1]:='Fogo Infernal';
-		deckHades[1,2]:= '10';
+		deckHades[1,2]:='8';
 		deckHades[1,3]:='Queimadura';
 		deckHades[2,1]:='DestroÃ§o da alma';
 		deckHades[2,2]:= '5';
@@ -228,7 +263,7 @@ Begin
 		deckZeus[4,3]:='Roubo de vida';
 		//deck de poseidon
 		deckPoseidon[1,1]:='Tsunami';
-		deckPoseidon[1,2]:='10';
+		deckPoseidon[1,2]:='5';
 		deckPoseidon[1,3]:='Afogado';
 		deckPoseidon[2,1]:='Maremoto';
 		deckPoseidon[2,2]:='8';
@@ -240,9 +275,10 @@ Begin
 		deckPoseidon[4,3]:='Waves';
 		//deck de Athena
 		deckAthena[1,1]:='Escudo Aegis';
+		deckAthena[1,2]:='5';
 		deckAthena[1,3]:='Refletir todos os ataques';
 		deckAthena[2,1]:='Falange';
-		deckAthena[2,2]:='6';
+		deckAthena[2,2]:='4';
 		deckAthena[2,3]:='Waves';
 		deckAthena[3,1]:='Maldição de Athena';
 		deckAthena[3,2]:='8';
@@ -256,6 +292,7 @@ Begin
 		
 		inimigo[1]:='Hercules';
 		inimigo[2]:='Persefone';
+		inimigo[3]:='Perseu';
 		//vida 
 		lifeEnemy:=50;
 		lifePlayer1:=50;
@@ -357,6 +394,7 @@ Begin
 								for l := 1 to 5 do 
 									writeln(l,' - ',inimigo[l]);
 								readln(resposta);
+								clrscr;
 								case (resposta) of
 									1:begin
 
@@ -369,16 +407,12 @@ Begin
 										repe:=0;
 										while(repe<>1000) do
 										begin
-											{for l := 1 to 4 do
-												for c:= 1 to 1 do
-												begin
-													writeln('Cartas do seu deck: ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2]);	
-												end;}
+											clrscr;
 											writeln('Escolha qual carta usara:');
 											for l := 1 to 4 do													
 												for c:= 1 to 1 do 
 													begin
-														writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito ',myDeck[l,c+2]);	
+														writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2]);	
 													end;
 											readln(resposta);
 											IA:=random(4)+1;
@@ -386,6 +420,7 @@ Begin
 											writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
 											delay(2000);
 											DanoPVE;
+											clrscr;
 											writeln('Vida: ', player1,'/',lifePlayer1);
 											writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
 											if(lifePlayer1<=0) then
@@ -399,6 +434,7 @@ Begin
 													repe:=1000;
 												end;						
 											readkey;
+											clrscr;
 										end;
 									end;								
 																		
@@ -408,28 +444,38 @@ Begin
 							2:begin
 								writeln('Nome do jogador 1');
 								readln(player1);
+								clrscr;
 								deck;
 								for l := 1 to 4 do
 									for c := 1 to 3 do
 									begin
 										deckPlayer1[l,c]:=myDeck[l,c];
 									end;
+								clrscr;
 								writeln('Nome do jogador 2');
 								readln(player2);
+								clrscr;
 								deck;
 								for l := 1 to 4 do
 									for c := 1 to 3 do
 									begin
 										deckPlayer2[l,c]:=myDeck[l,c];	
 									end;
-								luck:=random(2);
+								clrscr;
+								
 								writeln('Teste de sorte para ver que iniciara o duelo');
 								writeln('Se cai cara ',player1,' ganha');
 								writeln('Se cai coroa ',player2,' ganha');
+								writeln('Aperte qualquer tecla para lançar a moeda.');
+								readkey;
+								luck:=random(2);
 								if (luck=0) then
 									begin
+										
 										writeln(player1,' ira começar o duelo');
+										delay(2000);
 										repeat
+										clrscr;
 											writeln(player1,' escolha sua carta:');
 												for l := 1 to 4 do
 													for c:= 1 to 1 do
@@ -437,6 +483,7 @@ Begin
 														writeln('Cartas do seu deck: ',deckPlayer1[l,c],' Dano: ',deckPlayer1[l,c+1],' Efeito: ',deckPlayer1[l,c+2]);	
 													end;
 											readln(respostaPlayer1);
+											clrscr;
 											writeln(player2,' escolha sua carta:');
 												for l := 1 to 4 do
 													for c:= 1 to 1 do
@@ -445,18 +492,54 @@ Begin
 													end;												
 											readln(respostaPlayer2);
 											DanoPVP;
+											clrscr;
+											delay(2000);
 											writeln('Vida: ', player1,'/',lifePlayer1);
-											writeln('Vida: ',nomeInimigo,'/',lifeEnemy);
+											
+											writeln('Vida: ',player2,'/',lifePlayer2);
+											delay(2000);
 											if(lifePlayer1<=0) then											
 												writeln(player1,' está morto');
 											if(lifePlayer2<=0) then											
 												writeln(player2,' está morto');																										
-										until (lifePlayer1<=0) or (lifePlayer2<=0);
-									
-									
-									
+										until (lifePlayer1<=0) or (lifePlayer2<=0);																								
+										
+									end
+								else
+									begin
+										writeln(player2,' ira começar o duelo');
+										delay(2000);
+										repeat
+											clrscr;
+											writeln(player2,' escolha sua carta:');
+												for l := 1 to 4 do
+													for c:= 1 to 1 do
+													begin
+														writeln('Cartas do seu deck: ',deckPlayer2[l,c],' Dano: ',deckPlayer2[l,c+1],' Efeito: ',deckPlayer2[l,c+2]);	
+													end;
+											readln(respostaPlayer2);
+											clrscr;
+											writeln(player1,' escolha sua carta:');
+												for l := 1 to 4 do
+													for c:= 1 to 1 do
+													begin
+														writeln('Cartas do seu deck: ',deckPlayer1[l,c],' Dano: ',deckPlayer1[l,c+1],' Efeito: ',deckPlayer1[l,c+2]);	
+													end;												
+											readln(respostaPlayer1);
+											DanoPVP;
+											clrscr;
+											delay(2000);
+											writeln('Vida: ', player1,'/',lifePlayer1);
+											writeln('Vida: ',player2,'/',lifePlayer2);
+											delay(2000);
+											if(lifePlayer1<=0) then											
+												writeln(player1,' está morto');
+											if(lifePlayer2<=0) then											
+												writeln(player2,' está morto');																										
+										until (lifePlayer1<=0) or (lifePlayer2<=0);																								
+										
 									end;																				
-							
+
 							
 							
 							end;
