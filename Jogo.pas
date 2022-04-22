@@ -1,9 +1,10 @@
 Program Jogo;
 label menu;
 	var
-	repe,resposta,respostaPlayer1,respostaPlayer2,l,c,start,lifeEnemy,lifePlayer1,lifePlayer2,luck,IA,erro1,erro2: integer;
+	resposta,respostaPlayer1,respostaPlayer2,repe,l,c,start,lifeEnemy,lifePlayer1,lifePlayer2,luck,IA,erro1,erro2: integer;
 	player1,player2,nomeInimigo: string;
 	//inimigo tem q vira um vetor
+	
 	inimigo: array[1..5] of string;
 	myDeck,deckInimigo,deckPlayer1,deckPlayer2,deckHades,deckZeus,deckPoseidon,deckAthena: array[1..4,1..3] of string;
 	//start Ã© a inicializaÃ§Ã£o do jogo 
@@ -84,12 +85,14 @@ begin
 	nomeInimigo:=inimigo[resposta];
 	for l := 1 to 4 do
 		for c:= 1 to 3 do
-			if (nomeInimigo='Hercules') then	
-				deckInimigo[l,c]:=deckZeus[l,c];
-			if (nomeInimigo='Persefone') then
-				deckInimigo[l,c]:=deckHades[l,c];
-			if (nomeInimigo='Perseu') then
-				deckInimigo[l,c]:=deckPoseidon[l,c];
+		  begin
+				if (nomeInimigo='Hercules') then	
+					deckInimigo[l,c]:=deckZeus[l,c];
+				if (nomeInimigo='Persefone') then
+					deckInimigo[l,c]:=deckHades[l,c];
+				if (nomeInimigo='Perseu') then
+					deckInimigo[l,c]:=deckPoseidon[l,c];
+			end;
 	writeln(nomeInimigo,' está diante ',player1,' para o duelo');
 	repe:=0;
 	while(repe<>1000) do
@@ -168,6 +171,16 @@ Begin
 						lifePlayer1:= lifePlayer1-(danoPlayer1*waves);
 					end;
 			end; 
+		if(danoPlayer1=danoInimigo) or (danoInimigo=danoPlayer1) then
+			begin
+				delay(2000);
+				writeln('Empate, sem dano pra cada lado');
+				
+			end;
+			
+
+
+
 End;
 procedure DanoPvP;
 	var
@@ -188,12 +201,16 @@ Begin
 						writeln('Efeito de queimadura ativo.');
 					if (deckPlayer1[respostaPlayer1,c+2]='Eletrocuta')  then
 						writeln('Efeito de Eletrocuta ativo.');		
+				writeln('Aperte qualquer tecla para continua.');
+				readkey;
 				end;
 			
 			if(deckPlayer1[respostaPlayer1,c+2]='Afogado') then
 				begin
 					lifePlayer2:= lifePlayer2-5;
 					writeln('Efeito de Afogamento ativo');
+					writeln('Aperte qualquer tecla para continua.');
+					readkey;
 				end;
 				
 
@@ -203,6 +220,8 @@ Begin
 					lifePlayer2:= lifePlayer2-danoPlayer1;
 					lifePlayer1:= lifePlayer1+danoPlayer1;
 					writeln(deckPlayer1[respostaPlayer1,c+2],' feito com sucesso.');
+					writeln('Aperte qualquer tecla para continua.');
+					readkey;
 				end;
 			
 			if (deckPlayer1[respostaPlayer1,c+2]='Waves') then
@@ -211,6 +230,8 @@ Begin
 					lifePlayer2:= lifePlayer2-(danoPlayer1*waves);
 					writeln('Efeito de waves ativo');
 					writeln('Dano de waves multiplicado em ',waves);
+					writeln('Aperte qualquer tecla para continua.');
+					readkey;
 				end;
 			if (deckPlayer1[respostaPlayer1,c+2]='Refletir todos os ataques') then
 				begin
@@ -235,16 +256,25 @@ Begin
 						writeln('Efeito de queimadura ativo.');
 					if (deckPlayer1[respostaPlayer1,c+2]='Eletrocuta')  then
 						writeln('Efeito de Eletrocuta ativo.');	
+				writeln('Aperte qualquer tecla para continua.');
+				readkey;
 				end;
 			
 			if(deckPlayer2[respostaPlayer2,c+2]='Afogado') then
-				lifePlayer1:= lifePlayer1-5;
-				writeln('Efeito de Afogamento ativo');
+				begin
+					lifePlayer1:= lifePlayer1-5;
+					writeln('Efeito de Afogamento ativo');
+					writeln('Aperte qualquer tecla para continua.');
+					readkey;
+				end;
+				
 			if(deckPlayer2[respostaPlayer2,c+2]='Roubo de vida') then
 				begin
 					lifePlayer1:= lifePlayer1-danoPlayer2;
 					lifePlayer2:= lifePlayer2+danoPlayer2;
 					writeln(deckPlayer2[respostaPlayer2,c+2],' feito com sucesso.');
+					writeln('Aperte qualquer tecla para continua.');
+					readkey;	
 				end;
 			
 			if (deckPlayer2[respostaPlayer2,c+2]='Waves') then
@@ -253,6 +283,8 @@ Begin
 					lifePlayer1:= lifePlayer1-(danoPlayer2*waves);
 					writeln('Efeito de waves ativo');
 					writeln('Dano de waves multiplicado em ',waves);
+					writeln('Aperte qualquer tecla para continua.');
+					readkey;
 				end;
 			if (deckPlayer2[respostaPlayer1,c+2]='Refletir todos os ataques') then
 				begin
@@ -260,7 +292,13 @@ Begin
 					lifePlayer1:=lifePlayer1 - danoPlayer2;
 				end;													
 		end; 
-
+		if(danoPlayer1=danoPlayer2) or (danoPlayer2=danoPlayer1) then
+			begin
+				delay(2000);
+				writeln('Empate, sem dano pra cada lado');
+				writeln('Aperte qualquer tecla para continua.');
+				readkey;
+			end;
 
 end;
 Begin
@@ -429,8 +467,10 @@ Begin
 										CombatePvE;									
 										DanoPVE;
 										clrscr;
+										delay(2000);
 										writeln('Vida: ', player1,'/',lifePlayer1);
 										writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+										delay(2000);
 										if(lifePlayer1<=0) then
 											begin
 												writeln(player1,' está morto');
@@ -449,8 +489,10 @@ Begin
 										CombatePvE;									
 										DanoPVE;
 										clrscr;
+										delay(2000);
 										writeln('Vida: ', player1,'/',lifePlayer1);
 										writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+										delay(2000);												
 										if(lifePlayer1<=0) then
 											begin
 												writeln(player1,' está morto');
@@ -471,6 +513,7 @@ Begin
 										clrscr;
 										writeln('Vida: ', player1,'/',lifePlayer1);
 										writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+										delay(2000);												
 										if(lifePlayer1<=0) then
 											begin
 												writeln(player1,' está morto');
@@ -489,8 +532,10 @@ Begin
 										CombatePvE;									
 										DanoPVE;
 										clrscr;
+										
 										writeln('Vida: ', player1,'/',lifePlayer1);
 										writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+										delay(2000);												
 										if(lifePlayer1<=0) then
 											begin
 												writeln(player1,' está morto');
@@ -509,8 +554,10 @@ Begin
 										CombatePvE;									
 										DanoPVE;
 										clrscr;
+										
 										writeln('Vida: ', player1,'/',lifePlayer1);
 										writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+										delay(3000);											
 										if(lifePlayer1<=0) then
 											begin
 												writeln(player1,' está morto');
@@ -524,7 +571,13 @@ Begin
 										readkey;
 										clrscr;
 									
-									end; 
+									end
+									else
+										begin
+											writeln('Comando invalido');
+											writeln('Aperte qualquer tecla para retorna.');
+											readkey;
+										end; 
 																		
 								end;
 							end;	
