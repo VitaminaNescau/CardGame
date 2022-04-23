@@ -408,6 +408,7 @@ Begin
 					begin
 						queimar:=3;
 						lifeEnemy:= lifeEnemy-queimar;
+						writeln('Efeito de queimadura ativo.');
 					end;
 				
 				if(myDeck[resposta,c+2]='Afogado') then
@@ -424,6 +425,12 @@ Begin
 						waves:=random(5)+1;
 						lifeEnemy:= lifeEnemy-(danoPlayer1*waves);
 					end;
+				if (myDeck[resposta,c+2]='Refletir todos os ataques') then
+				begin
+					danoPlayer1:=danoInimigo;
+					lifeEnemy:=lifeEnemy-danoPlayer1;
+				end;
+			
 			end;
 		if(danoInimigo>danoPlayer1) then
 			begin
@@ -449,7 +456,16 @@ Begin
 						waves:=random(5)+1;
 						lifePlayer1:= lifePlayer1-(danoPlayer1*waves);
 					end;
+				if (deckInimigo[IA,c+2]='Refletir todos os ataques') then
+				begin
+					danoInimigo:=danoPlayer1;
+					lifePlayer1:=lifePlayer1-danoInimigo;
+				end;
+			
+			
 			end; 
+
+		
 		if(danoPlayer1=danoInimigo) or (danoInimigo=danoPlayer1) then
 			begin
 				delay(2000);
@@ -457,9 +473,6 @@ Begin
 				
 			end;
 			
-
-
-
 End;
 procedure DanoPvP;
 	var
@@ -479,9 +492,8 @@ Begin
 					if (deckPlayer1[respostaPlayer1,c+2]='Queimadura')  then
 						writeln('Efeito de queimadura ativo.');
 					if (deckPlayer1[respostaPlayer1,c+2]='Eletrocuta')  then
-						writeln('Efeito de Eletrocuta ativo.');		
-				writeln('Aperte qualquer tecla para continua.');
-				readkey;
+						writeln('Efeito de Eletrocuta ativo.');	
+				delay(2000);			
 				end;
 			
 			if(deckPlayer1[respostaPlayer1,c+2]='Afogado') then
@@ -609,7 +621,6 @@ Begin
 		deckZeus[1,3]:='Queimadura';
 		deckZeus[2,1]:='Sedução';
 		deckZeus[2,2]:='4';
-		deckZeus[2,3]:='Ataque inimigo inválido';
 		deckzeus[3,1]:='Soco Relâmpado';
 		deckZeus[3,2]:='14';
 		deckZeus[4,1]:='Icor';
@@ -1159,7 +1170,9 @@ Begin
 						if(resposta = 1) then
 						goto menu;
 						repe:=1000;
-					end;	
+					end;								
 			end;
+	
+	
 	end;//fim da luta
 End.
