@@ -625,7 +625,40 @@ procedure DanoPvP;
 end;
 procedure inimigoSprite;
 	begin
-
+writeln('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+BBBBBBBBBBBBBBBBBBBBBGr,,:rsBBBBBBBBBi,  rBBBBBBB
+BBBBBM2ri:2BBBBBBBBs   ,,,   rBBBBBB,  s  rBBBBBB');
+writeln('BBBB:      BBBBBBBB  ii:,,:: ,BBBBBBs2BB,  iBBBBB
+BBBM  hBh9BBBBBBBBBs s:::ri, rBBBBBBBBBB   :,BBBB
+BBBi  BBBBBBBBBBBBBB ,i:s:,  ,BBBBBBBBBG ,,,,rBBB');
+writeln('BBs,  GBBBBBBBBBBBBB9::, ,,  BBBBBBr   ,,,,,  BBB
+BB: , iBBS2hBBsi:rSGG  ,, sB22r::i,   , ,,  ,GBBB
+BB  ,,,s,,           ,,,,,,s,      ,   ,   sBBBBB');
+writeln('BM  ,,  X ,,  ,,,,,i,,,,,,, ,,,   ,i:,,  :MBBBBBB
+BM     ,r,,,,  , rss ,,s,,,,,,:i:i,  :r2BBBBBBBBB
+BBBB2,        :  rrs  rs ,,,,,, iBBBBBBBBBBBBBBBB');
+writeln('BBBBBBBG2ss29BBr , h,,,s,,,,,, ,BBBBBBBBBBBBBBBBB
+BBBBBBBBBBBBBBBB   is ,,,,,,,,:,BBBBBBBBBBBBBBBBB
+BBBBBBBBBBBBBBBBBr  s: ,,,,,,,: 9BBBBBBBBBBBBBBBB');
+writeln('BBBBBBBMBBBBBBBBBBG  s,,,,,,,,  MBBBBBBBBBBMMBBBB
+BBBMGBG2GMBMBBMGXBBS  :,,,,:,,  hBBM9BBBGGB9GBGBB
+BBB2GMGhB2G2BG9G9B9BBr, ,,,,,,, 5BB5BBB2MBB925BBB');
+writeln('BBMG9h99BhGhM99B5BGGBB, :,,,,, ,BBBBBMMMMMBG9G9BB
+BBBMBBBBBBBBMMBBBMBBBr ,,,,,,, rBBBBBBBBBBBBBBBBB
+BBBBBBBBBBBBBBBBBBBB2 ,,,,,,,,,        ,i2GBBBBBB');
+writeln('BBBBBBBBBBBBBBBBBBBB, ,,,,,,,,,,,,, ,:,     i9BBB
+BBBBBBBBBBBBBBBBBBBBs ,,,,,,,,,i,,,,,:iri:,    rB
+BBBBBBBBBBBBBBBBBBBBB, ,,,,,,,,:r ,,,,,,:iri,   s');
+writeln('BBBBBBBBBBBBBBBBBBBBBB: ,,,,,,,,s  ,,,,,,  ,,,  s
+BBBBBBBBBBBBBBBBBBBBBBs,,,,,,,, sssi:::, ,:   :GB
+BBBBBBBBBBBBBBBBBBBBBB r ,,,,,, XBB,   ,,:  :GBBB');
+writeln('BBBBBBBBBBBBBBBBBBBBBB r: ,,,,, BB  ,   ,iXBBBBBB
+BBBBBBBBBBBBBBBBBBBBBB2 2 ,,,,,,i    :sGBBBBBBBBB
+BBBBBBBBBBBBBBBBBGsrs5Birr,,,,,,  :SBBBBBBBBBBBBB');
+writeln('BBBBBB: rMBBBMGs       r,:,,,,,, BBBBBBBBBBBBBBBB
+BBGs,            :iirri ,,,,,,   GBBBBBBBBBBBBBBB
+B:     ,,,                    i:   5BBBBBBBBBBBBB');
+writeln('9sBBBBBBBBBBBBBBBGMGMMBBBMG55BBBB2rrrXBBBBBBBBBBB'); 
 	
 end;
 
