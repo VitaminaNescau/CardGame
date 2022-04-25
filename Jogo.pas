@@ -406,10 +406,9 @@ Procedure DanoPvE;
 		//converter dano para inteiro
 		val(myDeck[resposta,c+1],danoPlayer1,erro1);
 		val(deckInimigo[IA,c+1],danoInimigo,erro2);
-		writeln(myDeck[resposta,c+1],' ',deckInimigo[IA,c+1]);
 		if(danoPlayer1>danoInimigo) then
 			begin
-				lifeEnemy:= lifeEnemy-danoPlayer1;	
+				lifeEnemy:=lifeEnemy-danoPlayer1;	
 				if (myDeck[resposta,c+2]='Queimadura') or (myDeck[resposta,c+2]='Eletrocuta') then
 					//dano extra
 					begin
@@ -625,41 +624,41 @@ procedure DanoPvP;
 end;
 procedure inimigoSprite;
 	begin
-writeln('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-BBBBBBBBBBBBBBBBBBBBBGr,,:rsBBBBBBBBBi,  rBBBBBBB
-BBBBBM2ri:2BBBBBBBBs   ,,,   rBBBBBB,  s  rBBBBBB');
-writeln('BBBB:      BBBBBBBB  ii:,,:: ,BBBBBBs2BB,  iBBBBB
-BBBM  hBh9BBBBBBBBBs s:::ri, rBBBBBBBBBB   :,BBBB
-BBBi  BBBBBBBBBBBBBB ,i:s:,  ,BBBBBBBBBG ,,,,rBBB');
-writeln('BBs,  GBBBBBBBBBBBBB9::, ,,  BBBBBBr   ,,,,,  BBB
-BB: , iBBS2hBBsi:rSGG  ,, sB22r::i,   , ,,  ,GBBB
-BB  ,,,s,,           ,,,,,,s,      ,   ,   sBBBBB');
-writeln('BM  ,,  X ,,  ,,,,,i,,,,,,, ,,,   ,i:,,  :MBBBBBB
-BM     ,r,,,,  , rss ,,s,,,,,,:i:i,  :r2BBBBBBBBB
-BBBB2,        :  rrs  rs ,,,,,, iBBBBBBBBBBBBBBBB');
-writeln('BBBBBBBG2ss29BBr , h,,,s,,,,,, ,BBBBBBBBBBBBBBBBB
-BBBBBBBBBBBBBBBB   is ,,,,,,,,:,BBBBBBBBBBBBBBBBB
-BBBBBBBBBBBBBBBBBr  s: ,,,,,,,: 9BBBBBBBBBBBBBBBB');
-writeln('BBBBBBBMBBBBBBBBBBG  s,,,,,,,,  MBBBBBBBBBBMMBBBB
-BBBMGBG2GMBMBBMGXBBS  :,,,,:,,  hBBM9BBBGGB9GBGBB
-BBB2GMGhB2G2BG9G9B9BBr, ,,,,,,, 5BB5BBB2MBB925BBB');
-writeln('BBMG9h99BhGhM99B5BGGBB, :,,,,, ,BBBBBMMMMMBG9G9BB
-BBBMBBBBBBBBMMBBBMBBBr ,,,,,,, rBBBBBBBBBBBBBBBBB
-BBBBBBBBBBBBBBBBBBBB2 ,,,,,,,,,        ,i2GBBBBBB');
-writeln('BBBBBBBBBBBBBBBBBBBB, ,,,,,,,,,,,,, ,:,     i9BBB
-BBBBBBBBBBBBBBBBBBBBs ,,,,,,,,,i,,,,,:iri:,    rB
-BBBBBBBBBBBBBBBBBBBBB, ,,,,,,,,:r ,,,,,,:iri,   s');
-writeln('BBBBBBBBBBBBBBBBBBBBBB: ,,,,,,,,s  ,,,,,,  ,,,  s
-BBBBBBBBBBBBBBBBBBBBBBs,,,,,,,, sssi:::, ,:   :GB
-BBBBBBBBBBBBBBBBBBBBBB r ,,,,,, XBB,   ,,:  :GBBB');
-writeln('BBBBBBBBBBBBBBBBBBBBBB r: ,,,,, BB  ,   ,iXBBBBBB
-BBBBBBBBBBBBBBBBBBBBBB2 2 ,,,,,,i    :sGBBBBBBBBB
-BBBBBBBBBBBBBBBBBGsrs5Birr,,,,,,  :SBBBBBBBBBBBBB');
-writeln('BBBBBB: rMBBBMGs       r,:,,,,,, BBBBBBBBBBBBBBBB
-BBGs,            :iirri ,,,,,,   GBBBBBBBBBBBBBBB
-B:     ,,,                    i:   5BBBBBBBBBBBBB');
-writeln('9sBBBBBBBBBBBBBBBGMGMMBBBMG55BBBB2rrrXBBBBBBBBBBB'); 
-	
+	writeln('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+	BBBBBBBBBBBBBBBBBBBBBGr,,:rsBBBBBBBBBi,  rBBBBBBB
+	BBBBBM2ri:2BBBBBBBBs   ,,,   rBBBBBB,  s  rBBBBBB');
+	writeln('BBBB:      BBBBBBBB  ii:,,:: ,BBBBBBs2BB,  iBBBBB
+	BBBM  hBh9BBBBBBBBBs s:::ri, rBBBBBBBBBB   :,BBBB
+	BBBi  BBBBBBBBBBBBBB ,i:s:,  ,BBBBBBBBBG ,,,,rBBB');
+	writeln('BBs,  GBBBBBBBBBBBBB9::, ,,  BBBBBBr   ,,,,,  BBB
+	BB: , iBBS2hBBsi:rSGG  ,, sB22r::i,   , ,,  ,GBBB
+	BB  ,,,s,,           ,,,,,,s,      ,   ,   sBBBBB');
+	writeln('BM  ,,  X ,,  ,,,,,i,,,,,,, ,,,   ,i:,,  :MBBBBBB
+	BM     ,r,,,,  , rss ,,s,,,,,,:i:i,  :r2BBBBBBBBB
+	BBBB2,        :  rrs  rs ,,,,,, iBBBBBBBBBBBBBBBB');
+	writeln('BBBBBBBG2ss29BBr , h,,,s,,,,,, ,BBBBBBBBBBBBBBBBB
+	BBBBBBBBBBBBBBBB   is ,,,,,,,,:,BBBBBBBBBBBBBBBBB
+	BBBBBBBBBBBBBBBBBr  s: ,,,,,,,: 9BBBBBBBBBBBBBBBB');
+	writeln('BBBBBBBMBBBBBBBBBBG  s,,,,,,,,  MBBBBBBBBBBMMBBBB
+	BBBMGBG2GMBMBBMGXBBS  :,,,,:,,  hBBM9BBBGGB9GBGBB
+	BBB2GMGhB2G2BG9G9B9BBr, ,,,,,,, 5BB5BBB2MBB925BBB');
+	writeln('BBMG9h99BhGhM99B5BGGBB, :,,,,, ,BBBBBMMMMMBG9G9BB
+	BBBMBBBBBBBBMMBBBMBBBr ,,,,,,, rBBBBBBBBBBBBBBBBB
+	BBBBBBBBBBBBBBBBBBBB2 ,,,,,,,,,        ,i2GBBBBBB');
+	writeln('BBBBBBBBBBBBBBBBBBBB, ,,,,,,,,,,,,, ,:,     i9BBB
+	BBBBBBBBBBBBBBBBBBBBs ,,,,,,,,,i,,,,,:iri:,    rB
+	BBBBBBBBBBBBBBBBBBBBB, ,,,,,,,,:r ,,,,,,:iri,   s');
+	writeln('BBBBBBBBBBBBBBBBBBBBBB: ,,,,,,,,s  ,,,,,,  ,,,  s
+	BBBBBBBBBBBBBBBBBBBBBBs,,,,,,,, sssi:::, ,:   :GB
+	BBBBBBBBBBBBBBBBBBBBBB r ,,,,,, XBB,   ,,:  :GBBB');
+	writeln('BBBBBBBBBBBBBBBBBBBBBB r: ,,,,, BB  ,   ,iXBBBBBB
+	BBBBBBBBBBBBBBBBBBBBBB2 2 ,,,,,,i    :sGBBBBBBBBB
+	BBBBBBBBBBBBBBBBBGsrs5Birr,,,,,,  :SBBBBBBBBBBBBB');
+	writeln('BBBBBB: rMBBBMGs       r,:,,,,,, BBBBBBBBBBBBBBBB
+	BBGs,            :iirri ,,,,,,   GBBBBBBBBBBBBBBB
+	B:     ,,,                    i:   5BBBBBBBBBBBBB');
+	writeln('9sBBBBBBBBBBBBBBBGMGMMBBBMG55BBBB2rrrXBBBBBBBBBBB'); 
+		
 end;
 
 
@@ -760,7 +759,7 @@ Begin
 		gotoxy(25,5);
 		writeln('3 - PVP ou PVE' ) ;
 		gotoxy(125,5);
-		writeln('4 - Ajuda');
+		writeln('4 - Ajuda/Tutorial');
 		gotoxy(75,7);
 		writeln('5 - Sair do jogo');
 		readln(resposta ) ;
@@ -783,12 +782,25 @@ Begin
 			3:start:=3;
 			
 			4:begin
-				writeln('Tutorial/Ajuda');
-				writeln('1 - Como jogar?');
+				writeln('1 - Como jogar? ');
 				readln(resposta);
+					clrscr;
 					if (resposta=1) then
        			begin
-       			 writeln('');
+	       			 writeln('Selecione seu DECK, ao iniciar a batalha suas cartas ser�o mostradas.');
+	       			 writeln('Nome da carta/Dano/Efeito/Quantidade');
+	       			 writeln('Soco rel�mpago/14/Nenhum/2');
+	       			 writeln('Efeitos: Queimadura/Eletrocutar/Waves/Roubo de vida/Refletir');
+	       			 writeln('Queimadura e Eletrocutar gera mais 5 de dano ao alvo');
+	       			 writeln('Waves gera dano bonus por ondas aleatorias');
+	       			 writeln('Roubo de vida gera dano bonus  e recupera vida do usuario');
+	       			 writeln('Reflitir devolve o dano inimigo da rodada');							 						 
+							 writeln('Se a carta selecionada tiver dano menor que a carta inimiga, o inimigo que causara dano');
+	       			 writeln('Utilizar a carta diminui a quantidade n�o importando se o PLAYER ganhou o round');
+						   writeln('Objetivo do jogo � eliminar o inimigo utilizando as cartas disponiveis');							 
+							 writeln('Pressione qualquer tecla para retorna ao menu');
+							 readkey;
+							 goto menu;
 						 end
      			else
      				begin
@@ -818,7 +830,7 @@ Begin
 		//historia
 		if(start=1) then
 			begin
-			//historia;
+			//ira luta com os inimigos em ordem, e tera um boss final
 			end;
 		
 		
@@ -831,487 +843,322 @@ Begin
 				repe:=0;
 				while (repe<>1000) do 
 					begin	
-						clrscr;
-						writeln('Bem vindo a arena de duelo');
-						writeln('Selecione a forma de duelo');
-						writeln('1 - PVE');
-						writeln('2 - PVP');
-						writeln('3 - Menu principal');
-						readln(resposta);
-						clrscr;
-						case ( resposta) of
-							//PVE
-							1:begin
-								write('Nome do jogador: ');
-								readln(player1);
-								clrscr;
-								deck;
-								writeln('Selecione o inimigo:');
-								clrscr;
-								for l := 1 to 3 do 
-									begin
-										x:=x+60;
-										y:=3;
-										gotoxy(x,y);
-										writeln(l,' - ',inimigo[l]);
-									end;
-								readln(resposta);
-								clrscr;
-								case (resposta) of
-									1:begin
-										CombatePvE;									
-										writeln(nomeInimigo,' está diante ',player1,' para o duelo');
-										delay(2000);
-										repe:=0;
+						repeat
+							
+						
+							clrscr;
+							writeln('Bem vindo a arena de duelo');
+							writeln('Selecione a forma de duelo');
+							writeln('1 - PVE');
+							writeln('2 - PVP');
+							writeln('3 - Menu principal');
+							readln(resposta);
+							clrscr;
+							case ( resposta) of
+								//PVE
+								1:begin
+									repeat
 										
-										repeat										
-											while(repe<>1000) do
-											begin	
-												repeat
-													//repe:=0;
-													clrscr;
-													writeln('Escolha qual carta usara:');
-													for l := 1 to 4 do													
-														for c:= 1 to 1 do 
-															begin
-																writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
-																writeln;
-															end;
-													readln(resposta);
-													if(resposta>4) then
-														begin
-															writeln('Comando invalido');
-															delay(2000);
-															//repe:=0;
-															teste:=0;	
-														end
-													else
-														teste:=1;
-												until  (teste=1);	
-													if(myDeck[resposta,c+3]='0')then
-														begin
-															for c:= 1 to 4 do 
-																myDeck[resposta,c]:=' ';
-																
-															writeln('Carta não esta disponivel');
-															delay(1500);
-															c:=1;
-															myDeck[resposta,c+3]:='0';
-															repe:=0;
-															
-														end
-												
-													else
-														begin
-															repe:=1000;
-															
-														end;											
-											end;
-												IA:=random(4)+1;
-												writeln(player1,' usou ',myDeck[resposta,c]);
-												writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
-												delay(2000);
-												DanoPVE;
-												clrscr;
-												writeln('Vida: ', player1,'/',lifePlayer1);
-												writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
-												delay(2000);
-												repe:=0;
-												if(lifePlayer1<=0) then
-													begin
-														writeln(player1,' est� morto(a)');
-														repe:=1000;
-													end;
-												if(lifeEnemy<=0) then
-													begin
-														writeln(nomeInimigo,' est� morto(a)');
-														repe:=1000;
-													end;						
-												readkey;
-												clrscr;
-										until (lifeEnemy<=0) or (lifePlayer1<=0);
-									end;
-									2:begin
-										CombatePvE;									
-										writeln(nomeInimigo,' est� diante ',player1,' para o duelo');
-										delay(2000);
-										repe:=0;
-										
-										repeat										
-											while(repe<>1000) do
-											begin	
-												repeat
-													//repe:=0;
-													clrscr;
-													writeln('Escolha qual carta usara:');
-													for l := 1 to 4 do													
-														for c:= 1 to 1 do 
-															begin
-																writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
-															end;
-													readln(resposta);
-													if(resposta>4) then
-														begin
-															writeln('Comando invalido');
-															delay(2000);
-															//repe:=0;
-															teste:=0;	
-														end
-													else
-														teste:=1;
-												until  (teste=1);	
-													if(myDeck[resposta,c+3]='0')then
-														begin
-															for c:= 1 to 4 do 
-																myDeck[resposta,c]:=' ';
-																
-															writeln('Carta não esta disponivel');
-															delay(1500);
-															c:=1;
-															myDeck[resposta,c+3]:='0';
-															repe:=0;
-															
-														end
-												
-													else
-														begin
-															repe:=1000;
-															
-														end;											
-											end;
-												IA:=random(4)+1;
-												writeln(player1,' usou ',myDeck[resposta,c]);
-												writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
-												delay(2000);
-												DanoPVE;
-												clrscr;
-												writeln('Vida: ', player1,'/',lifePlayer1);
-												writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
-												delay(2000);
-												repe:=0;
-												if(lifePlayer1<=0) then
-													begin
-														writeln(player1,' está morto(a)');
-														repe:=1000;
-													end;
-												if(lifeEnemy<=0) then
-													begin
-														writeln(nomeInimigo,' está morto(a)');
-														repe:=1000;
-													end;						
-												readkey;
-												clrscr;
-										until (lifeEnemy<=0) or (lifePlayer1<=0);
-									end;
-									3:begin
-										CombatePvE;									
-										writeln(nomeInimigo,' está diante ',player1,' para o duelo');
-										delay(2000);
-										repe:=0;
-										
-										repeat										
-											while(repe<>1000) do
-											begin	
-												repeat
-													//repe:=0;
-													clrscr;
-													writeln('Escolha qual carta usara:');
-													for l := 1 to 4 do													
-														for c:= 1 to 1 do 
-															begin
-																writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
-															end;
-													readln(resposta);
-													if(resposta>4) then
-														begin
-															writeln('Comando invalido');
-															delay(2000);
-															//repe:=0;
-															teste:=0;	
-														end
-													else
-														teste:=1;
-												until  (teste=1);	
-													if(myDeck[resposta,c+3]='0')then
-														begin
-															for c:= 1 to 4 do 
-																myDeck[resposta,c]:=' ';
-																
-															writeln('Carta não esta disponivel');
-															delay(1500);
-															c:=1;
-															myDeck[resposta,c+3]:='0';
-															repe:=0;
-															
-														end
-												
-													else
-														begin
-															repe:=1000;
-															
-														end;											
-											end;
-												IA:=random(4)+1;
-												writeln(player1,' usou ',myDeck[resposta,c]);
-												writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
-												delay(2000);
-												DanoPVE;
-												clrscr;
-												writeln('Vida: ', player1,'/',lifePlayer1);
-												writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
-												delay(2000);
-												repe:=0;
-												if(lifePlayer1<=0) then
-													begin
-														writeln(player1,' está morto(a)');
-														repe:=1000;
-													end;
-												if(lifeEnemy<=0) then
-													begin
-														writeln(nomeInimigo,' está morto(a)');
-														repe:=1000;
-													end;						
-												readkey;
-												clrscr;
-										until (lifeEnemy<=0) or (lifePlayer1<=0);
-									end;
-									4:begin
-										CombatePvE;									
-										writeln(nomeInimigo,' está diante ',player1,' para o duelo');
-										delay(2000);
-										repe:=0;
-										
-										repeat										
-											while(repe<>1000) do
-											begin	
-												repeat
-													//repe:=0;
-													clrscr;
-													writeln('Escolha qual carta usara:');
-													for l := 1 to 4 do													
-														for c:= 1 to 1 do 
-															begin
-																writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
-															end;
-													readln(resposta);
-													if(resposta>4) then
-														begin
-															writeln('Comando invalido');
-															delay(2000);
-															//repe:=0;
-															teste:=0;	
-														end
-													else
-														teste:=1;
-												until  (teste=1);	
-													if(myDeck[resposta,c+3]='0')then
-														begin
-															for c:= 1 to 4 do 
-																myDeck[resposta,c]:=' ';
-																
-															writeln('Carta não esta disponivel');
-															delay(1500);
-															c:=1;
-															myDeck[resposta,c+3]:='0';
-															repe:=0;
-															
-														end
-												
-													else
-														begin
-															repe:=1000;
-															
-														end;											
-											end;
-												IA:=random(4)+1;
-												writeln(player1,' usou ',myDeck[resposta,c]);
-												writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
-												delay(2000);
-												DanoPVE;
-												clrscr;
-												writeln('Vida: ', player1,'/',lifePlayer1);
-												writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
-												delay(2000);
-												repe:=0;
-												if(lifePlayer1<=0) then
-													begin
-														writeln(player1,' está morto(a)');
-														repe:=1000;
-													end;
-												if(lifeEnemy<=0) then
-													begin
-														writeln(nomeInimigo,' está morto(a)');
-														repe:=1000;
-													end;						
-												readkey;
-												clrscr;
-										until (lifeEnemy<=0) or (lifePlayer1<=0);
-									end;
-									5:begin
-										CombatePvE;									
-										writeln(nomeInimigo,' está diante ',player1,' para o duelo');
-										delay(2000);
-										repe:=0;
-										
-										repeat										
-											while(repe<>1000) do
-											begin	
-												repeat
-													//repe:=0;
-													clrscr;
-													writeln('Escolha qual carta usara:');
-													for l := 1 to 4 do													
-														for c:= 1 to 1 do 
-															begin
-																writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
-															end;
-													readln(resposta);
-													if(resposta>4) then
-														begin
-															writeln('Comando invalido');
-															delay(2000);
-															//repe:=0;
-															teste:=0;	
-														end
-													else
-														teste:=1;
-												until  (teste=1);	
-													if(myDeck[resposta,c+3]='0')then
-														begin
-															for c:= 1 to 4 do 
-																myDeck[resposta,c]:=' ';
-																
-															writeln('Carta não esta disponivel');
-															delay(1500);
-															c:=1;
-															myDeck[resposta,c+3]:='0';
-															repe:=0;
-															
-														end
-												
-													else
-														begin
-															repe:=1000;
-															
-														end;											
-											end;
-												IA:=random(4)+1;
-												writeln(player1,' usou ',myDeck[resposta,c]);
-												writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
-												delay(2000);
-												DanoPVE;
-												clrscr;
-												writeln('Vida: ', player1,'/',lifePlayer1);
-												writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
-												delay(2000);
-												repe:=0;
-												if(lifePlayer1<=0) then
-													begin
-														writeln(player1,' está morto(a)');
-														repe:=1000;
-													end;
-												if(lifeEnemy<=0) then
-													begin
-														writeln(nomeInimigo,' está morto(a)');
-														repe:=1000;
-													end;						
-												readkey;
-												clrscr;
-										until (lifeEnemy<=0) or (lifePlayer1<=0);
-									end;
-								end;
-							end;	
-							//PVP
-							2:begin
-								writeln('Nome do jogador 1');
-								readln(player1);
-								clrscr;
-								deck;
-								for l := 1 to 4 do
-									for c := 1 to 4 do
-									begin
-										deckPlayer1[l,c]:=myDeck[l,c];
-									end;
-								clrscr;
-								writeln('Nome do jogador 2');
-								readln(player2);
-								clrscr;
-								deck;
-								for l := 1 to 4 do
-									for c := 1 to 4 do
-									begin
-										deckPlayer2[l,c]:=myDeck[l,c];	
-									end;
-								clrscr;
-								
-								writeln('Teste de sorte para ver que iniciara o duelo');
-								writeln('Se cai cara ',player1,' ganha');
-								writeln('Se cai coroa ',player2,' ganha');
-								writeln('Aperte qualquer tecla para lan�ar a moeda.');
-								readkey;
-								luck:=random(2);
-								
-								if (luck=0) then
-									begin
-										
-										writeln(player1,' ira começar o duelo');
-										delay(2000);
-										repeat
-											repe:=0;
-											teste:=0;
-											
-											//player1 
-											while(repe<>1000) do
-											begin	
-												repeat																							
-													clrscr;
-													writeln(player1,' escolha sua carta:');
-														for l := 1 to 4 do
-															for c:= 1 to 1 do
-															begin
-																writeln( l,' - ',deckPlayer1[l,c],' Dano: ',deckPlayer1[l,c+1],' Efeito: ',deckPlayer1[l,c+2],' Quantidade: ', deckPlayer1[l,c+3]);	
-															end;
-													readln(respostaPlayer1);
-													if(respostaPlayer1>4) then
-														begin
-															writeln('Comando Invalido');
-															delay(2000);
-															teste:=0;
-														end
-													else
-														teste:=1;
-												until (teste=1);		
-														if(deckPlayer1[respostaPlayer1,c+3]='0')then
-															begin
-																for c:= 1 to 4 do 
-																	deckPlayer1[respostaPlayer1,c]:=' ';
-																writeln('Carta não esta disponivel');
-																delay(1500);
-																c:=1;
-																deckPlayer1[respostaPlayer1,c+3]:='0';
-																repe:=0;
-																
-															end
-														
-											
-														else
-															repe:=1000;
-											end;											
-											//player2
-											repe:=0;
-											teste:=0;
-											while(repe<>1000) do
+										clrscr;
+										write('Nome do jogador: ');
+										readln(player1);
+										clrscr;
+										deck;
+										writeln('Selecione o inimigo:');
+										clrscr;
+										for l := 1 to 3 do 
 											begin
-												repeat																								
-													clrscr;
-													writeln(player2,' escolha sua carta:');
-														for l := 1 to 4 do
-															for c:= 1 to 1 do
+												x:=x+60;
+												y:=3;
+												gotoxy(x,y);
+												writeln(l,' - ',inimigo[l]);
+											end;
+										readln(resposta);
+										clrscr;
+										case (resposta) of
+											1:begin
+												CombatePvE;									
+												writeln(nomeInimigo,' está diante ',player1,' para o duelo');
+												delay(2000);
+												repe:=0;
+												
+												repeat										
+													while(repe<>1000) do
+													begin	
+														repeat
+															//repe:=0;
+															clrscr;
+															writeln('Escolha qual carta usara:');
+															for l := 1 to 4 do													
+																for c:= 1 to 1 do 
+																	begin
+																		writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
+																		writeln;
+																	end;
+															readln(resposta);
+															if(resposta>4) then
+																begin
+																	writeln('Comando invalido');
+																	delay(2000);
+																	//repe:=0;
+																	teste:=0;	
+																end
+															else
+																teste:=1;
+														until  (teste=1);	
+															if(myDeck[resposta,c+3]='0')then
+																begin
+																	for c:= 1 to 4 do 
+																		myDeck[resposta,c]:=' ';
+																		
+																	writeln('Carta não esta disponivel');
+																	delay(1500);
+																	c:=1;
+																	myDeck[resposta,c+3]:='0';
+																	repe:=0;
+																	
+																end
+														
+															else
+																begin
+																	repe:=1000;
+																	
+																end;											
+													end;
+														IA:=random(4)+1;
+														writeln(player1,' usou ',myDeck[resposta,c]);
+														writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
+														delay(2000);
+														DanoPVE;
+														clrscr;
+														writeln('Vida: ', player1,'/',lifePlayer1);
+														writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+														delay(2000);
+														repe:=0;
+														if(lifePlayer1<=0) then
 															begin
-																writeln(l,' - ',deckPlayer2[l,c],' Dano: ',deckPlayer2[l,c+1],' Efeito: ',deckPlayer2[l,c+2],' Quantidade: ', deckPlayer2[l,c+3]);	
-															end;												
-														readln(respostaPlayer2);
-														if(respostaPlayer2>4) then
+																writeln(player1,' est� morto(a)');
+																repe:=1000;
+																teste:=1;
+															end;
+														if(lifeEnemy<=0) then
+															begin
+																writeln(nomeInimigo,' est� morto(a)');
+																repe:=1000;
+																teste:=1;
+															end;						
+														readkey;
+														clrscr;
+												until (lifeEnemy<=0) or (lifePlayer1<=0);
+											end;
+											2:begin
+												CombatePvE;									
+												writeln(nomeInimigo,' est� diante ',player1,' para o duelo');
+												delay(2000);
+												repe:=0;
+												
+												repeat										
+													while(repe<>1000) do
+													begin	
+														repeat
+															//repe:=0;
+															clrscr;
+															writeln('Escolha qual carta usara:');
+															for l := 1 to 4 do													
+																for c:= 1 to 1 do 
+																	begin
+																		writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
+																	end;
+															readln(resposta);
+															if(resposta>4) then
+																begin
+																	writeln('Comando invalido');
+																	delay(2000);
+																	//repe:=0;
+																	teste:=0;	
+																end
+															else
+																teste:=1;
+														until  (teste=1);	
+															if(myDeck[resposta,c+3]='0')then
+																begin
+																	for c:= 1 to 4 do 
+																		myDeck[resposta,c]:=' ';
+																		
+																	writeln('Carta não esta disponivel');
+																	delay(1500);
+																	c:=1;
+																	myDeck[resposta,c+3]:='0';
+																	repe:=0;
+																	
+																end
+														
+															else
+																begin
+																	repe:=1000;
+																	
+																end;											
+													end;
+														IA:=random(4)+1;
+														writeln(player1,' usou ',myDeck[resposta,c]);
+														writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
+														delay(2000);
+														DanoPVE;
+														clrscr;
+														writeln('Vida: ', player1,'/',lifePlayer1);
+														writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+														delay(2000);
+														repe:=0;
+														if(lifePlayer1<=0) then
+															begin
+																writeln(player1,' está morto(a)');
+																repe:=1000;
+																teste:=1;
+															end;
+														if(lifeEnemy<=0) then
+															begin
+																writeln(nomeInimigo,' está morto(a)');
+																repe:=1000;
+																teste:=1;
+															end;						
+														readkey;
+														clrscr;
+												until (lifeEnemy<=0) or (lifePlayer1<=0);
+											end;
+											3:begin
+												CombatePvE;									
+												writeln(nomeInimigo,' está diante ',player1,' para o duelo');
+												delay(2000);
+												repe:=0;
+												
+												repeat										
+													while(repe<>1000) do
+													begin	
+														repeat
+															//repe:=0;
+															clrscr;
+															writeln('Escolha qual carta usara:');
+															for l := 1 to 4 do													
+																for c:= 1 to 1 do 
+																	begin
+																		writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
+																	end;
+															readln(resposta);
+															if(resposta>4) then
+																begin
+																	writeln('Comando invalido');
+																	delay(2000);
+																	//repe:=0;
+																	teste:=0;	
+																end
+															else
+																teste:=1;
+														until  (teste=1);	
+															if(myDeck[resposta,c+3]='0')then
+																begin
+																	for c:= 1 to 4 do 
+																		myDeck[resposta,c]:=' ';
+																		
+																	writeln('Carta não esta disponivel');
+																	delay(1500);
+																	c:=1;
+																	myDeck[resposta,c+3]:='0';
+																	repe:=0;
+																	
+																end
+														
+															else
+																begin
+																	repe:=1000;
+																	
+																end;											
+													end;
+														IA:=random(4)+1;
+														writeln(player1,' usou ',myDeck[resposta,c]);
+														writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
+														delay(2000);
+														DanoPVE;
+														clrscr;
+														writeln('Vida: ', player1,'/',lifePlayer1);
+														writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+														delay(2000);
+														repe:=0;
+														if(lifePlayer1<=0) then
+															begin
+																writeln(player1,' está morto(a)');
+																repe:=1000;
+																teste:=1;
+															end;
+														if(lifeEnemy<=0) then
+															begin
+																writeln(nomeInimigo,' está morto(a)');
+																repe:=1000;
+																teste:=1;
+															end;						
+														readkey;
+														clrscr;
+												until (lifeEnemy<=0) or (lifePlayer1<=0);
+											end
+											else
+											begin
+												writeln('Comando Invalido');
+												teste:=0;
+											end;
+										end;	
+									until (teste=1);	
+								end;	
+								//PVP
+								2:begin
+									writeln('Nome do jogador 1');
+									readln(player1);
+									clrscr;
+									deck;
+									for l := 1 to 4 do
+										for c := 1 to 4 do
+										begin
+											deckPlayer1[l,c]:=myDeck[l,c];
+										end;
+									clrscr;
+									writeln('Nome do jogador 2');
+									readln(player2);
+									clrscr;
+									deck;
+									for l := 1 to 4 do
+										for c := 1 to 4 do
+										begin
+											deckPlayer2[l,c]:=myDeck[l,c];	
+										end;
+									clrscr;
+									
+									writeln('Teste de sorte para ver que iniciara o duelo');
+									writeln('Se cai cara ',player1,' ganha');
+									writeln('Se cai coroa ',player2,' ganha');
+									writeln('Aperte qualquer tecla para lan�ar a moeda.');
+									readkey;
+									luck:=random(2);
+									
+									if (luck=0) then
+										begin
+											
+											writeln(player1,' ira começar o duelo');
+											delay(2000);
+											repeat
+												repe:=0;
+												teste:=0;
+												
+												//player1 
+												while(repe<>1000) do
+												begin	
+													repeat																							
+														clrscr;
+														writeln(player1,' escolha sua carta:');
+															for l := 1 to 4 do
+																for c:= 1 to 1 do
+																begin
+																	writeln( l,' - ',deckPlayer1[l,c],' Dano: ',deckPlayer1[l,c+1],' Efeito: ',deckPlayer1[l,c+2],' Quantidade: ', deckPlayer1[l,c+3]);	
+																end;
+														readln(respostaPlayer1);
+														if(respostaPlayer1>4) then
 															begin
 																writeln('Comando Invalido');
 																delay(2000);
@@ -1319,68 +1166,47 @@ Begin
 															end
 														else
 															teste:=1;
-												until (teste=1);	
-													if(deckPlayer2[respostaPlayer2,c+3]='0')then
-														begin
-															for c:= 1 to 4 do 
-																deckPlayer2[respostaPlayer2,c]:=' ';
-															writeln('Carta não esta disponivel');
-															delay(1500);
-															c:=1;
-															deckPlayer2[respostaPlayer2,c+3]:='0';
-															repe:=0;
+													until (teste=1);		
+															if(deckPlayer1[respostaPlayer1,c+3]='0')then
+																begin
+																	for c:= 1 to 4 do 
+																		deckPlayer1[respostaPlayer1,c]:=' ';
+																	writeln('Carta não esta disponivel');
+																	delay(1500);
+																	c:=1;
+																	deckPlayer1[respostaPlayer1,c+3]:='0';
+																	repe:=0;
+																	
+																end
 															
-														end
-													
-													else
-														repe:=1000;
-											end;
-													
-										
-											DanoPVP;
-											clrscr;
-											delay(2000);
-											writeln('Vida: ', player1,'/',lifePlayer1);
-											
-											writeln('Vida: ',player2,'/',lifePlayer2);
-											delay(2000);
-											if(lifePlayer1<=0) then											
-												writeln(player1,' está morto');
-											if(lifePlayer2<=0) then											
-												writeln(player2,' está morto');																										
-										until (lifePlayer1<=0) or (lifePlayer2<=0);																							
-										
-									end
-								else
-									begin
-									
-										writeln(player2,' ira começar o duelo');
-										delay(2000);
-										repeat
-											repe:=0;
-											teste:=0;
-											//player2 
-											while(repe<>1000) do
-											begin	
-												repeat
-													clrscr;
-													writeln(player2,' escolha sua carta:');
-														for l := 1 to 4 do
-															for c:= 1 to 1 do
-															begin
-																writeln('Cartas do seu deck: ',deckPlayer2[l,c],' Dano: ',deckPlayer2[l,c+1],' Efeito: ',deckPlayer2[l,c+2],' Quantidade: ',deckPlayer2[l,c+3]);	
-															end;
-													readln(respostaPlayer2);
-													if(respostaPlayer2>4) then
-														begin
-															writeln('Comando Invalido');
-															delay(2000);
-															teste:=0;
-														end
-													else
-														teste:=1;
-												until (teste=1);	
-												if(deckPlayer2[respostaPlayer2,c+3]='0')then
+												
+															else
+																repe:=1000;
+												end;											
+												//player2
+												repe:=0;
+												teste:=0;
+												while(repe<>1000) do
+												begin
+													repeat																								
+														clrscr;
+														writeln(player2,' escolha sua carta:');
+															for l := 1 to 4 do
+																for c:= 1 to 1 do
+																begin
+																	writeln(l,' - ',deckPlayer2[l,c],' Dano: ',deckPlayer2[l,c+1],' Efeito: ',deckPlayer2[l,c+2],' Quantidade: ', deckPlayer2[l,c+3]);	
+																end;												
+															readln(respostaPlayer2);
+															if(respostaPlayer2>4) then
+																begin
+																	writeln('Comando Invalido');
+																	delay(2000);
+																	teste:=0;
+																end
+															else
+																teste:=1;
+													until (teste=1);	
+														if(deckPlayer2[respostaPlayer2,c+3]='0')then
 															begin
 																for c:= 1 to 4 do 
 																	deckPlayer2[respostaPlayer2,c]:=' ';
@@ -1392,82 +1218,142 @@ Begin
 																
 															end
 														
-											
-												else
-													repe:=1000;
-											end;							
-											repe:=0;
-											teste:=0;
-											
-											//player1 
-											while(repe<>1000) do
-											begin	
-												repeat																							
-													clrscr;
-													writeln(player1,' escolha sua carta:');
-														for l := 1 to 4 do
-															for c:= 1 to 1 do
-															begin
-																writeln( l,' - ',deckPlayer1[l,c],' Dano: ',deckPlayer1[l,c+1],' Efeito: ',deckPlayer1[l,c+2],' Quantidade: ', deckPlayer1[l,c+3]);	
-															end;
-													readln(respostaPlayer1);
-													if(respostaPlayer1>4) then
-														begin
-															writeln('Comando Invalido');
-															delay(2000);
-															teste:=0;
-														end
-													else
-														teste:=1;
-												until (teste=1);		
-														if(deckPlayer1[respostaPlayer1,c+3]='0')then
-															begin
-																for c:= 1 to 4 do 
-																	deckPlayer1[respostaPlayer1,c]:=' ';
-																writeln('Carta não esta disponivel');
-																delay(1500);
-																c:=1;
-																deckPlayer1[respostaPlayer1,c+3]:='0';
-																repe:=0;
-																
-															end
-														
-											
 														else
 															repe:=1000;
-											end;
+												end;
+														
 											
-											
-											DanoPVP;
-											clrscr;
-											delay(2000);
-											writeln('Vida: ', player1,'/',lifePlayer1);
-											
-											writeln('Vida: ',player2,'/',lifePlayer2);
-											delay(2000);
-											if(lifePlayer1<=0) then											
-												writeln(player1,' está morto');
-											if(lifePlayer2<=0) then											
-												writeln(player2,' está morto');		
-															
-										until (lifePlayer1<=0) or (lifePlayer2<=0);																								
+												DanoPVP;
+												clrscr;
+												delay(2000);
+												writeln('Vida: ', player1,'/',lifePlayer1);
 												
-									end;																				
+												writeln('Vida: ',player2,'/',lifePlayer2);
+												delay(2000);
+												if(lifePlayer1<=0) then											
+													writeln(player1,' está morto');
+												if(lifePlayer2<=0) then											
+													writeln(player2,' está morto');																										
+											until (lifePlayer1<=0) or (lifePlayer2<=0);																							
+											
+										end
+									else
+										begin
+										
+											writeln(player2,' ira começar o duelo');
+											delay(2000);
+											repeat
+												repe:=0;
+												teste:=0;
+												//player2 
+												while(repe<>1000) do
+												begin	
+													repeat
+														clrscr;
+														writeln(player2,' escolha sua carta:');
+															for l := 1 to 4 do
+																for c:= 1 to 1 do
+																begin
+																	writeln('Cartas do seu deck: ',deckPlayer2[l,c],' Dano: ',deckPlayer2[l,c+1],' Efeito: ',deckPlayer2[l,c+2],' Quantidade: ',deckPlayer2[l,c+3]);	
+																end;
+														readln(respostaPlayer2);
+														if(respostaPlayer2>4) then
+															begin
+																writeln('Comando Invalido');
+																delay(2000);
+																teste:=0;
+															end
+														else
+															teste:=1;
+													until (teste=1);	
+													if(deckPlayer2[respostaPlayer2,c+3]='0')then
+																begin
+																	for c:= 1 to 4 do 
+																		deckPlayer2[respostaPlayer2,c]:=' ';
+																	writeln('Carta não esta disponivel');
+																	delay(1500);
+																	c:=1;
+																	deckPlayer2[respostaPlayer2,c+3]:='0';
+																	repe:=0;
+																	
+																end
+															
+												
+													else
+														repe:=1000;
+												end;							
+												repe:=0;
+												teste:=0;
+												
+												//player1 
+												while(repe<>1000) do
+												begin	
+													repeat																							
+														clrscr;
+														writeln(player1,' escolha sua carta:');
+															for l := 1 to 4 do
+																for c:= 1 to 1 do
+																begin
+																	writeln( l,' - ',deckPlayer1[l,c],' Dano: ',deckPlayer1[l,c+1],' Efeito: ',deckPlayer1[l,c+2],' Quantidade: ', deckPlayer1[l,c+3]);	
+																end;
+														readln(respostaPlayer1);
+														if(respostaPlayer1>4) then
+															begin
+																writeln('Comando Invalido');
+																delay(2000);
+																teste:=0;
+															end
+														else
+															teste:=1;
+													until (teste=1);		
+															if(deckPlayer1[respostaPlayer1,c+3]='0')then
+																begin
+																	for c:= 1 to 4 do 
+																		deckPlayer1[respostaPlayer1,c]:=' ';
+																	writeln('Carta não esta disponivel');
+																	delay(1500);
+																	c:=1;
+																	deckPlayer1[respostaPlayer1,c+3]:='0';
+																	repe:=0;
+																	
+																end
+															
+												
+															else
+																repe:=1000;
+												end;
+												
+												
+												DanoPVP;
+												clrscr;
+												delay(2000);
+												writeln('Vida: ', player1,'/',lifePlayer1);
+												
+												writeln('Vida: ',player2,'/',lifePlayer2);
+												delay(2000);
+												if(lifePlayer1<=0) then											
+													writeln(player1,' está morto');
+												if(lifePlayer2<=0) then											
+													writeln(player2,' está morto');		
+																
+											until (lifePlayer1<=0) or (lifePlayer2<=0);																								
+													
+										end;																				
 
-							
-							
-							end;
-							//retorno ao menu principal
-							3:goto menu
-							else
-								begin
-									writeln('Opção não encontrado');
-									delay(1000);
-									writeln('Pressione qualquer tecla para volta');
-									readkey;
-								end; 
-						end;																																		
-					
+								
+								
+								end;
+								//retorno ao menu principal
+								3:goto menu
+								else
+									begin
+										writeln('Op��o n�o encontrado');
+										delay(1500);
+										repe:=0;
+										teste:=0;
+									end; 
+							end;																																		
+						until (teste=1);
 					
 						writeln('Fim do jogo.');
 						writeln('1 - Retorna ao menu.');
