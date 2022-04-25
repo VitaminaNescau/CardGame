@@ -416,6 +416,7 @@ Procedure DanoPvE;
 						queimar:=3;
 						lifeEnemy:= lifeEnemy-queimar;
 						writeln('Efeito de queimadura ativo.');
+					 	delay(1500);
 					end;
 				
 				if(myDeck[resposta,c+2]='Afogado') then
@@ -445,6 +446,7 @@ Procedure DanoPvE;
 					danoPlayer1:=danoPlayer1+danoInimigo;
 					lifeEnemy:=lifeEnemy-danoPlayer1;
 					writeln('Dano refletido');
+					delay(1500);
 				end;
 			
 			end;
@@ -487,6 +489,7 @@ Procedure DanoPvE;
 						danoInimigo:=danoPlayer1;
 						lifePlayer1:=lifePlayer1-danoInimigo;
 						writeln('Dano refletido');
+					  delay(1500);
 					end;
 			
 			
@@ -495,9 +498,8 @@ Procedure DanoPvE;
 		
 		if(danoPlayer1=danoInimigo) or (danoInimigo=danoPlayer1) then
 			begin
-				delay(2000);
 				writeln('Empate, sem dano pra cada lado');
-				
+				delay(1500);
 			end;
 			
 End;
@@ -552,14 +554,14 @@ procedure DanoPvP;
 					lifePlayer2:= lifePlayer2-(danoPlayer1*waves);
 					writeln('Efeito de waves ativo');
 					writeln('Dano de waves multiplicado em ',waves);
-					writeln('Aperte qualquer tecla para continua.');
-					readkey;
+					delay(2000);
 				end;
 			if (deckPlayer1[respostaPlayer1,c+2]='Refletir todos os ataques') then
 				begin
 					danoPlayer1:=danoPlayer1+danoPlayer2;
 					lifePlayer2:=lifePlayer2-danoPlayer1;
 					writeln('Dano refletido');
+					delay(1500);
 				end;
 				
 		
@@ -586,8 +588,7 @@ procedure DanoPvP;
 				begin
 					lifePlayer1:= lifePlayer1-5;
 					writeln('Efeito de Afogamento ativo');
-					writeln('Aperte qualquer tecla para continua.');
-					readkey;
+					delay(1500);
 				end;
 				
 			if(deckPlayer2[respostaPlayer2,c+2]='Roubo de vida') then
@@ -595,8 +596,7 @@ procedure DanoPvP;
 					lifePlayer1:= lifePlayer1-danoPlayer2;
 					lifePlayer2:= lifePlayer2+danoPlayer2;
 					writeln(deckPlayer2[respostaPlayer2,c+2],' feito com sucesso.');
-					writeln('Aperte qualquer tecla para continua.');
-					readkey;	
+					delay(1500);	
 				end;
 			
 			if (deckPlayer2[respostaPlayer2,c+2]='Waves') then
@@ -605,21 +605,21 @@ procedure DanoPvP;
 					lifePlayer1:= lifePlayer1-(danoPlayer2*waves);
 					writeln('Efeito de waves ativo');
 					writeln('Dano de waves multiplicado em ',waves);
-					writeln('Aperte qualquer tecla para continua.');
-					readkey;
+					delay(2000);
 				end;
 			if (deckPlayer2[respostaPlayer1,c+2]='Refletir todos os ataques') then
 				begin
 					danoPlayer2:=danoPlayer1;
 					lifePlayer1:=lifePlayer1 - danoPlayer2;
+					writeln('Dano refletido');
+					delay(1500);
 				end;													
 	end; 
 		if(danoPlayer1=danoPlayer2) or (danoPlayer2=danoPlayer1) then
 			begin
-				delay(2000);
+				
 				writeln('Empate, sem dano pra cada lado');
-				writeln('Aperte qualquer tecla para continua.');
-				readkey;
+				delay(1500);
 			end;
 
 end;
@@ -719,7 +719,6 @@ Begin
 		deckAthena[1,2]:='5';
 		deckAthena[1,3]:='Refletir todos os ataques';
 		deckAthena[1,4]:='3';
-		deckAthena[1,1]:='1';
 		deckAthena[2,1]:='Falange';
 		deckAthena[2,2]:='4';
 		deckAthena[2,3]:='Waves';
@@ -784,9 +783,18 @@ Begin
 			3:start:=3;
 			
 			4:begin
-				writeln('Ajuda');
+				writeln('Tutorial/Ajuda');
 				writeln('1 - Como jogar?');
-				readkey;
+				readln(resposta);
+					if (resposta=1) then
+       			begin
+       			 writeln('');
+						 end
+     			else
+     				begin
+       				writeln('Comando invalido');
+       				delay(1500);
+						end;
 			end;
 			//uma das forma de sai do jogo
 			5:begin
@@ -801,8 +809,7 @@ Begin
 					repe:=0;
 					start:=0;
 					writeln('Comando invalido');
-					writeln('Pressione qualquer tecla para volta ao menu');
-					readkey;
+					delay(2000);
 					
 				end;
 		end;
@@ -843,8 +850,8 @@ Begin
 								clrscr;
 								for l := 1 to 3 do 
 									begin
-										x:=x+50;
-										y:=2;
+										x:=x+60;
+										y:=3;
 										gotoxy(x,y);
 										writeln(l,' - ',inimigo[l]);
 									end;
@@ -868,13 +875,13 @@ Begin
 														for c:= 1 to 1 do 
 															begin
 																writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
+																writeln;
 															end;
 													readln(resposta);
 													if(resposta>4) then
 														begin
 															writeln('Comando invalido');
-															writeln('Aperte qualquer tecla para retorna.');
-															readkey;
+															delay(2000);
 															//repe:=0;
 															teste:=0;	
 														end
@@ -912,12 +919,12 @@ Begin
 												repe:=0;
 												if(lifePlayer1<=0) then
 													begin
-														writeln(player1,' está morto');
+														writeln(player1,' est� morto(a)');
 														repe:=1000;
 													end;
 												if(lifeEnemy<=0) then
 													begin
-														writeln(nomeInimigo,' está morto');
+														writeln(nomeInimigo,' est� morto(a)');
 														repe:=1000;
 													end;						
 												readkey;
@@ -926,7 +933,7 @@ Begin
 									end;
 									2:begin
 										CombatePvE;									
-										writeln(nomeInimigo,' está diante ',player1,' para o duelo');
+										writeln(nomeInimigo,' est� diante ',player1,' para o duelo');
 										delay(2000);
 										repe:=0;
 										
@@ -946,8 +953,7 @@ Begin
 													if(resposta>4) then
 														begin
 															writeln('Comando invalido');
-															writeln('Aperte qualquer tecla para retorna.');
-															readkey;
+															delay(2000);
 															//repe:=0;
 															teste:=0;	
 														end
@@ -985,12 +991,12 @@ Begin
 												repe:=0;
 												if(lifePlayer1<=0) then
 													begin
-														writeln(player1,' está morto');
+														writeln(player1,' está morto(a)');
 														repe:=1000;
 													end;
 												if(lifeEnemy<=0) then
 													begin
-														writeln(nomeInimigo,' está morto');
+														writeln(nomeInimigo,' está morto(a)');
 														repe:=1000;
 													end;						
 												readkey;
@@ -1019,8 +1025,7 @@ Begin
 													if(resposta>4) then
 														begin
 															writeln('Comando invalido');
-															writeln('Aperte qualquer tecla para retorna.');
-															readkey;
+															delay(2000);
 															//repe:=0;
 															teste:=0;	
 														end
@@ -1058,12 +1063,12 @@ Begin
 												repe:=0;
 												if(lifePlayer1<=0) then
 													begin
-														writeln(player1,' está morto');
+														writeln(player1,' está morto(a)');
 														repe:=1000;
 													end;
 												if(lifeEnemy<=0) then
 													begin
-														writeln(nomeInimigo,' está morto');
+														writeln(nomeInimigo,' está morto(a)');
 														repe:=1000;
 													end;						
 												readkey;
@@ -1092,8 +1097,7 @@ Begin
 													if(resposta>4) then
 														begin
 															writeln('Comando invalido');
-															writeln('Aperte qualquer tecla para retorna.');
-															readkey;
+															delay(2000);
 															//repe:=0;
 															teste:=0;	
 														end
@@ -1131,12 +1135,12 @@ Begin
 												repe:=0;
 												if(lifePlayer1<=0) then
 													begin
-														writeln(player1,' está morto');
+														writeln(player1,' está morto(a)');
 														repe:=1000;
 													end;
 												if(lifeEnemy<=0) then
 													begin
-														writeln(nomeInimigo,' está morto');
+														writeln(nomeInimigo,' está morto(a)');
 														repe:=1000;
 													end;						
 												readkey;
@@ -1165,8 +1169,7 @@ Begin
 													if(resposta>4) then
 														begin
 															writeln('Comando invalido');
-															writeln('Aperte qualquer tecla para retorna.');
-															readkey;
+															delay(2000);
 															//repe:=0;
 															teste:=0;	
 														end
@@ -1204,12 +1207,12 @@ Begin
 												repe:=0;
 												if(lifePlayer1<=0) then
 													begin
-														writeln(player1,' está morto');
+														writeln(player1,' está morto(a)');
 														repe:=1000;
 													end;
 												if(lifeEnemy<=0) then
 													begin
-														writeln(nomeInimigo,' está morto');
+														writeln(nomeInimigo,' está morto(a)');
 														repe:=1000;
 													end;						
 												readkey;
@@ -1244,7 +1247,7 @@ Begin
 								writeln('Teste de sorte para ver que iniciara o duelo');
 								writeln('Se cai cara ',player1,' ganha');
 								writeln('Se cai coroa ',player2,' ganha');
-								writeln('Aperte qualquer tecla para lançar a moeda.');
+								writeln('Aperte qualquer tecla para lan�ar a moeda.');
 								readkey;
 								luck:=random(2);
 								
@@ -1283,6 +1286,7 @@ Begin
 																for c:= 1 to 4 do 
 																	deckPlayer1[respostaPlayer1,c]:=' ';
 																writeln('Carta não esta disponivel');
+																delay(1500);
 																c:=1;
 																deckPlayer1[respostaPlayer1,c+3]:='0';
 																repe:=0;
@@ -1321,6 +1325,7 @@ Begin
 															for c:= 1 to 4 do 
 																deckPlayer2[respostaPlayer2,c]:=' ';
 															writeln('Carta não esta disponivel');
+															delay(1500);
 															c:=1;
 															deckPlayer2[respostaPlayer2,c+3]:='0';
 															repe:=0;
@@ -1380,6 +1385,7 @@ Begin
 																for c:= 1 to 4 do 
 																	deckPlayer2[respostaPlayer2,c]:=' ';
 																writeln('Carta não esta disponivel');
+																delay(1500);
 																c:=1;
 																deckPlayer2[respostaPlayer2,c+3]:='0';
 																repe:=0;
@@ -1419,6 +1425,7 @@ Begin
 																for c:= 1 to 4 do 
 																	deckPlayer1[respostaPlayer1,c]:=' ';
 																writeln('Carta não esta disponivel');
+																delay(1500);
 																c:=1;
 																deckPlayer1[respostaPlayer1,c+3]:='0';
 																repe:=0;
