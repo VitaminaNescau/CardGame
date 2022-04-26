@@ -391,10 +391,12 @@ procedure CombatePvE;
 					deckInimigo[l,c]:=deckPoseidon[l,c];
 			end;
 	for l:=1 to 4 do
+		begin
 		val(deckInimigo[l,2],danoInimigo,erro2);
 		danoInimigo:=danoInimigo+1;
 		str(danoInimigo,deckInimigo[l,2]);
 		//deckInimigo[l,2]:=
+		end;
 end;
 //falta dados em dano
 Procedure DanoPvE;
