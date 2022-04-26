@@ -376,6 +376,8 @@ procedure Deck;
 	end;
 end;
 procedure CombatePvE;
+	var
+	danoInimigo: integer;
 	begin
 	nomeInimigo:=inimigo[resposta];
 	for l := 1 to 4 do
@@ -388,6 +390,11 @@ procedure CombatePvE;
 				if (nomeInimigo='Perseu') then
 					deckInimigo[l,c]:=deckPoseidon[l,c];
 			end;
+	for l:=1 to 4 do
+		val(deckInimigo[l,2],danoInimigo,erro2);
+		danoInimigo:=danoInimigo+1;
+		str(danoInimigo,deckInimigo[l,2]);
+		//deckInimigo[l,2]:=
 end;
 //falta dados em dano
 Procedure DanoPvE;
@@ -406,7 +413,8 @@ Procedure DanoPvE;
 		str(qtdIni,deckInimigo[IA,c+3]);
 		//converter dano para inteiro
 		val(myDeck[resposta,c+1],danoPlayer1,erro1);
-		val(deckInimigo[IA,c+1],danoInimigo,erro2);
+		
+		
 		if(danoPlayer1>danoInimigo) then
 			begin
 				lifeEnemy:=lifeEnemy-danoPlayer1;	
@@ -915,11 +923,11 @@ Begin
 				resposta:=1;
 				repe:=0;
 					writeln('Seu  inimigo é ',inimigo[resposta]);
-					
+					deck;
 					CombatePvE;
 					writeln(nomeInimigo 	,' está diante ',player1,' para o duelo');
 					delay(2000);
-					deck;
+					repe:=0;
 					
 					repeat
 						while(repe<>1000) do
@@ -1005,7 +1013,8 @@ Begin
 								CombatePvE;
 								writeln(nomeInimigo,' está diante ',player1,' para o duelo');
 								delay(2000);
-								deck;	
+								deck;
+								repe:=0;	
 									repeat
 										while(repe<>1000) do
 										begin
@@ -1090,7 +1099,7 @@ Begin
 									writeln(nomeInimigo,' está diante ',player1,' para o duelo');
 									delay(2000);
 									deck;
-									
+									repe:=0;
 									
 									repeat
 										while(repe<>1000) do
@@ -1170,15 +1179,6 @@ Begin
 							end;	
 					
 					
-					
-
-		
-						
-
-		
-		
-		
-		
 		end;
 		//PVP e PVE
 		if(start=3) then
