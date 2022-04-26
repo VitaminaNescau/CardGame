@@ -1,6 +1,10 @@
 Program Jogo;
 label menu;
-
+{Jogo feito para projeto final da materia de logica de programação
+ codigo fonte feito por VITOR DE JESUS
+ sprites feito por DOUGLAS
+ teste/correção GISELA/ICARU
+ }
 var
 	teste,teste1,qtd,resposta,respostaPlayer1,respostaPlayer2,repe,l,c,start,lifeEnemy,lifePlayer1,lifePlayer2,luck,IA,erro1,erro2,x,y: integer;
 	player1,player2,nomeInimigo: string;
@@ -304,7 +308,7 @@ procedure Deck;
 	begin
 	
 	repe:=0;
-	while(repe<>950) do
+	while(repe<>1000) do
 		begin 
 		clrscr;
 			gotoxy(75,1);
@@ -634,47 +638,154 @@ procedure DanoPvP;
 
 end;
 procedure inimigoSprite;
+var con,per : integer;
 	begin
-	writeln('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-	BBBBBBBBBBBBBBBBBBBBBGr,,:rsBBBBBBBBBi,  rBBBBBBB
-	BBBBBM2ri:2BBBBBBBBs   ,,,   rBBBBBB,  s  rBBBBBB');
-	writeln('BBBB:      BBBBBBBB  ii:,,:: ,BBBBBBs2BB,  iBBBBB
-	BBBM  hBh9BBBBBBBBBs s:::ri, rBBBBBBBBBB   :,BBBB
-	BBBi  BBBBBBBBBBBBBB ,i:s:,  ,BBBBBBBBBG ,,,,rBBB');
-	writeln('BBs,  GBBBBBBBBBBBBB9::, ,,  BBBBBBr   ,,,,,  BBB
-	BB: , iBBS2hBBsi:rSGG  ,, sB22r::i,   , ,,  ,GBBB
-	BB  ,,,s,,           ,,,,,,s,      ,   ,   sBBBBB');
-	writeln('BM  ,,  X ,,  ,,,,,i,,,,,,, ,,,   ,i:,,  :MBBBBBB
-	BM     ,r,,,,  , rss ,,s,,,,,,:i:i,  :r2BBBBBBBBB
-	BBBB2,        :  rrs  rs ,,,,,, iBBBBBBBBBBBBBBBB');
-	writeln('BBBBBBBG2ss29BBr , h,,,s,,,,,, ,BBBBBBBBBBBBBBBBB
-	BBBBBBBBBBBBBBBB   is ,,,,,,,,:,BBBBBBBBBBBBBBBBB
-	BBBBBBBBBBBBBBBBBr  s: ,,,,,,,: 9BBBBBBBBBBBBBBBB');
-	writeln('BBBBBBBMBBBBBBBBBBG  s,,,,,,,,  MBBBBBBBBBBMMBBBB
-	BBBMGBG2GMBMBBMGXBBS  :,,,,:,,  hBBM9BBBGGB9GBGBB
-	BBB2GMGhB2G2BG9G9B9BBr, ,,,,,,, 5BB5BBB2MBB925BBB');
-	writeln('BBMG9h99BhGhM99B5BGGBB, :,,,,, ,BBBBBMMMMMBG9G9BB
-	BBBMBBBBBBBBMMBBBMBBBr ,,,,,,, rBBBBBBBBBBBBBBBBB
-	BBBBBBBBBBBBBBBBBBBB2 ,,,,,,,,,        ,i2GBBBBBB');
-	writeln('BBBBBBBBBBBBBBBBBBBB, ,,,,,,,,,,,,, ,:,     i9BBB
-	BBBBBBBBBBBBBBBBBBBBs ,,,,,,,,,i,,,,,:iri:,    rB
-	BBBBBBBBBBBBBBBBBBBBB, ,,,,,,,,:r ,,,,,,:iri,   s');
-	writeln('BBBBBBBBBBBBBBBBBBBBBB: ,,,,,,,,s  ,,,,,,  ,,,  s
-	BBBBBBBBBBBBBBBBBBBBBBs,,,,,,,, sssi:::, ,:   :GB
-	BBBBBBBBBBBBBBBBBBBBBB r ,,,,,, XBB,   ,,:  :GBBB');
-	writeln('BBBBBBBBBBBBBBBBBBBBBB r: ,,,,, BB  ,   ,iXBBBBBB
-	BBBBBBBBBBBBBBBBBBBBBB2 2 ,,,,,,i    :sGBBBBBBBBB
-	BBBBBBBBBBBBBBBBBGsrs5Birr,,,,,,  :SBBBBBBBBBBBBB');
-	writeln('BBBBBB: rMBBBMGs       r,:,,,,,, BBBBBBBBBBBBBBBB
-	BBGs,            :iirri ,,,,,,   GBBBBBBBBBBBBBBB
-	B:     ,,,                    i:   5BBBBBBBBBBBBB');
+	con:=15;
+	per:=65;
+	gotoxy(con, 4 );
+	writeln('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB');
+	gotoxy(con, 5);
+	writeln('BBBBBBBBBBBBBBBBBBBBBGr,,:rsBBBBBBBBBi,  rBBBBBBB');
+	gotoxy(con, 6);
+	writeln('BBBBBM2ri:2BBBBBBBBs   ,,,   rBBBBBB,  s  rBBBBBB');
+	gotoxy(con, 7);
+	writeln('BBBB:      BBBBBBBB  ii:,,:: ,BBBBBBs2BB,  iBBBBB');
+	gotoxy(con, 8 );
+	writeln('BBBM  hBh9BBBBBBBBBs s:::ri, rBBBBBBBBBB   :,BBBB');
+	gotoxy(con, 9 );
+	writeln('BBBi  BBBBBBBBBBBBBB ,i:s:,  ,BBBBBBBBBG ,,,,rBBB');
+	gotoxy(con, 10 );
+	writeln('BBs,  GBBBBBBBBBBBBB9::, ,,  BBBBBBr   ,,,,,  BBB');
+	gotoxy(con, 11);
+	writeln('BB: , iBBS2hBBsi:rSGG  ,, sB22r::i,   , ,,  ,GBBB');
+	gotoxy(con, 12 );
+	writeln('BB  ,,,s,,           ,,,,,,s,      ,   ,   sBBBBB');
+	gotoxy(con, 13 );
+	writeln('BM  ,,  X ,,  ,,,,,i,,,,,,, ,,,   ,i:,,  :MBBBBBB');
+	gotoxy(con, 14 );
+	writeln('BM     ,r,,,,  , rss ,,s,,,,,,:i:i,  :r2BBBBBBBBB');
+	gotoxy(con, 15 );
+	writeln('BBBB2,        :  rrs  rs ,,,,,, iBBBBBBBBBBBBBBBB');
+	gotoxy(con, 16 );
+	writeln('BBBBBBBG2ss29BBr , h,,,s,,,,,, ,BBBBBBBBBBBBBBBBB');
+	gotoxy(con, 17 );
+	writeln('BBBBBBBBBBBBBBBB   is ,,,,,,,,:,BBBBBBBBBBBBBBBBB');
+	gotoxy(con, 18 );
+	writeln('BBBBBBBBBBBBBBBBBr  s: ,,,,,,,: 9BBBBBBBBBBBBBBBB');
+	gotoxy(con, 19);
+	writeln('BBBBBBBMBBBBBBBBBBG  s,,,,,,,,  MBBBBBBBBBBMMBBBB');
+	gotoxy(con, 20 );
+	writeln('BBBMGBG2GMBMBBMGXBBS  :,,,,:,,  hBBM9BBBGGB9GBGBB');
+	gotoxy(con, 21 );
+	writeln('BBB2GMGhB2G2BG9G9B9BBr, ,,,,,,, 5BB5BBB2MBB925BBB');
+	gotoxy(con, 22 );
+	writeln('BBMG9h99BhGhM99B5BGGBB, :,,,,, ,BBBBBMMMMMBG9G9BB');
+	gotoxy(con, 23 );
+	writeln('BBBMBBBBBBBBMMBBBMBBBr ,,,,,,, rBBBBBBBBBBBBBBBBB');
+	gotoxy(con, 24 );
+	writeln('BBBBBBBBBBBBBBBBBBBB2 ,,,,,,,,,        ,i2GBBBBBB');
+	gotoxy(con, 25 );
+	writeln('BBBBBBBBBBBBBBBBBBBB, ,,,,,,,,,,,,, ,:,     i9BBB');
+	gotoxy(con, 26 );
+	writeln('BBBBBBBBBBBBBBBBBBBBs ,,,,,,,,,i,,,,,:iri:,    rB');
+	gotoxy(con, 27 );
+	writeln('BBBBBBBBBBBBBBBBBBBBB, ,,,,,,,,:r ,,,,,,:iri,   s');
+	gotoxy(con, 28 );
+	writeln('BBBBBBBBBBBBBBBBBBBBBB: ,,,,,,,,s  ,,,,,,  ,,,  s');
+	gotoxy(con, 29 );
+	writeln('BBBBBBBBBBBBBBBBBBBBBBs,,,,,,,, sssi:::, ,:   :GB');
+	gotoxy(con, 30 );
+	writeln('BBBBBBBBBBBBBBBBBBBBBB r ,,,,,, XBB,   ,,:  :GBBB');
+	gotoxy(con, 31 );
+	writeln('BBBBBBBBBBBBBBBBBBBBBB r: ,,,,, BB  ,   ,iXBBBBBB');
+	gotoxy(con, 32 );
+	writeln('BBBBBBBBBBBBBBBBBBBBBB2 2 ,,,,,,i    :sGBBBBBBBBB');
+	gotoxy(con, 33 );
+	writeln('BBBBBBBBBBBBBBBBBGsrs5Birr,,,,,,  :SBBBBBBBBBBBBB');
+	gotoxy(con, 34 );
+	writeln('BBBBBB: rMBBBMGs       r,:,,,,,, BBBBBBBBBBBBBBBB');
+	gotoxy(con, 35 );
+	writeln('BBGs,            :iirri ,,,,,,   GBBBBBBBBBBBBBBB');
+	gotoxy(con, 36 );
+	writeln('B:     ,,,                    i:   5BBBBBBBBBBBBB');
+	gotoxy(con, 37 );
 	writeln('9sBBBBBBBBBBBBBBBGMGMMBBBMG55BBBB2rrrXBBBBBBBBBBB'); 
-		
+	
+	
+	//persefone
+ 	gotoxy(per, 4 );
+writeln(',s,r:i:i:i:i:i,i:r,rissr:sssisrsir:r:r:r:i,r:i:ii');
+	gotoxy(per, 5 );
+writeln('issrsrsrsrsisrsisrss2 ,   :is,iirrSs2rsrsrsrsrsiS');
+	gotoxy(per, 6 );                
+writeln(',s,r,r:r,r,r:i:i:s:  , ,           ,:sirisrs:r,i:');
+ 	gotoxy(per, 7 );
+writeln('irr:r:r:r:r:r:r:r ,               ,         iii,s');
+	gotoxy(per, 8 );
+writeln(',sii:r:r:r:r:r:s,      ss2s:   ,       : ,   s:ri ');
+  	gotoxy(per, 9 );
+writeln('rrsssisrsii:i:ii: ,   r rGM9s:, ,   , :,    , s:s');
+  	gotoxy(per, 10 );
+writeln(':2        ,:r:r:ii2   :s9:BMG r,,s: ,         ,rri');
+ 	gotoxy(per, 11);
+writeln('rr  ?..?   s:r:r:rr   r, h9Br, X22            ,r:s');
+   	gotoxy(per, 12 );
+writeln(',sis,  :,r:r:r:r:s  GM:s5M2s  shM      ,   ,ss,rr');
+	gotoxy(per, 13 );
+writeln('irr:r :ss:r:r:r:r:s,BM :rhMhBG9hBM2         ,ir,s');
+	gotoxy(per, 14);
+writeln(':2 ,,  rir,r:r,r:r:r B:  i5BhM9GG      ,    :s,ri');
+ 	gotoxy(per, 15 );
+writeln('s: sr,, iir:r:r:rirs  MMBMB29GMs,           iir:s');
+	gotoxy(per, 16);
+writeln('ir Gs,:2 r:r:r:ri      :    9MM,         ,  ss:rr');
+	gotoxy(per, 17);
+writeln('rr:, ,MM,,r:r:r:s ,   ,   ,:BMB5              r:s');
+ 	gotoxy(per, 18);
+writeln(',srr iM9 r:i:r:i,r:,     BGBhB  :             :si');
+ 	gotoxy(per, 19);
+writeln('iis   BGh rir:: : , 2rs,,X9ssr,  : , ,,   ,   r:2');
+ 	gotoxy(per, 20);
+writeln(',s  r iBMS r:r:,iMMMG2rrsSr: ::BMB s  ,s       ,r');
+ 	gotoxy(per, 21);
+writeln('iiiir,,MMMh rir,,rBGMG9sBsh2M9BM2,G ,  2i   ,   ,');
+ 	gotoxy(per, 22);
+writeln(':s:i:i BXMM9 , rM9:B9,isi9MB9BM9 XGMi ,i , , , ,  ');
+ 	gotoxy(per, 23);
+writeln('rir:r: 9M5MMM B BM 2B9: BGB2BMM 9GMGBMr ,     , S ');
+ 	gotoxy(per, 24);
+writeln(',s:r:s GMMSBssM:BB5,GBM2,B2BMsrM9MMBs         :sr');
+ 	gotoxy(per, 25);
+writeln('rri,r:, B9G9GGB:hBBi2GM9G,rXs2B9MMM ,    ,r:srs:s');
+ 	gotoxy(per, 26);
+writeln(',s:i:r:, s22ss,: rsi 9GM9M9,sB9BGr , , , sir:r:ir');
+  	gotoxy(per, 27 );
+writeln(':rr:r:ri: i ,,i:r sr,,59G9Bs9GGs, ris,ris:r:r:i,s');
+  	gotoxy(per, 28);
+writeln(':s,r,r:r:r:r:r:s:,:BGBsssG29ss,GMs s:r:r:r:r,r,ii ');
+  	gotoxy(per, 29);
+writeln('iii:rii:r,r:r:r::ss  GBM2s2r9MBMBMB sis:i,r:r:r:s ');
+  	gotoxy(per, 30);
+writeln(',s:i:s,r:i:r:i:r ,ih , , ,rBMBirrs   , s:r:r:r,ii');
+ 	gotoxy(per, 31);
+writeln('iir,rir,ririr:i BG59M:Xr,,si:     GM2 , rrs:r:r:s');
+  	gotoxy(per, 32 );
+writeln('i2ir:s:srrrsir,SGBMBMBMBGBMBMBMBM sBBB   ,isir:rs');
+  	gotoxy(per, 33);
+writeln('sss:sisrrisrsr,9B2BMBM2GBM2MBMBMB :M2MB   iirisis');
+  	gotoxy(per, 34);
+writeln(':2:sisisisrsis BBXMBBBMsMBMsMBMBB  BG2BB rrsisirs ');
+  	gotoxy(per, 35);
+writeln('sssrsrsrsisrsi MB2MBBMBMSMBMsGBMB,,MBM2BM 2rsrsr5');
+    	gotoxy(per, 36 );
+writeln('iXrsrsrsrsrsrs,BMB2BMBMBGMMBM2GBMs BMBMhMi:srsiss');
+  	gotoxy(per, 37 );
+writeln('r22sss5s2sSrXrsGBM9BBBBMBMBMBMXMB9 MBGBGBr:sSs2sX');	
 end;
 procedure historia;
 begin
 	gotoxy(73,1);
-	writeln('Os Contos da Morte');
+	writeln('Os pertos da Morte');
 	delay(1500);
 	gotoxy(26,3);
 	writeln('Durante a Titanomaquia, a guerra entre os titãs, liderados por Cronos, contra os deuses do Olimpo, liderados por Zeus.');
@@ -1170,7 +1281,7 @@ Begin
 															for c:= 1 to 4 do 
 																myDeck[resposta,c]:=' ';
 																
-															writeln('Carta nÃ£o esta disponivel');
+															writeln('Carta não esta disponivel');
 															delay(1500);
 															c:=1;
 															myDeck[resposta,c+3]:='0';
@@ -1269,11 +1380,14 @@ Begin
 										clrscr;
 										for l := 1 to 3 do 
 											begin
-												x:=x+60;
+												x:=x+30;
 												y:=3;
+												
 												gotoxy(x,y);
 												writeln(l,' - ',inimigo[l]);
+											  x:=x+25;
 											end;
+											inimigoSprite;
 										readln(resposta);
 										clrscr;
 										case (resposta) of
@@ -1503,6 +1617,7 @@ Begin
 											else
 											begin
 												writeln('Comando Invalido');
+												delay(2000);
 												teste:=0;
 											end;
 										end;	
