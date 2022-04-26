@@ -903,24 +903,27 @@ Begin
 		//historia
 		if(start=1) then
 			begin
-			resposta:=0;
+			
 			//ira luta com os inimigos em ordem, e tera um boss final
 			historia;
+			clrscr;
 			deck;
 			//level 1
 				lifeEnemy:=50;
 				lifePlayer1:=50;
-				
-					writeln('Seu  inimigo é ',inimigo[1]);
-					nomeInimigo:=inimigo[1];
-					writeln(inimigo[1],' está diante ',player1,' para o duelo');
-					resposta:=1;
+				resposta:=1;
+				repe:=0;
+					writeln('Seu  inimigo é ',inimigo[resposta]);
+					
 					CombatePvE;
+					writeln(nomeInimigo 	,' está diante ',player1,' para o duelo');
+					
+					
 					repeat
 						while(repe<>1000) do
 						begin
 							repeat
-								//repe:=0;
+								repe:=0;
 								clrscr;
 								writeln('Escolha qual carta usara:');
 								for l := 1 to 4 do													
@@ -934,7 +937,7 @@ Begin
 									begin
 										writeln('Comando invalido');
 										delay(2000);
-										//repe:=0;
+									
 										teste:=0;	
 									end
 								else
@@ -988,177 +991,183 @@ Begin
 									clrscr;
 					until (lifeEnemy<=0);
 				
-				//level 2
-				if(lifeEnemy<=0)then
-				begin
-					lifeEnemy:=50;
-					lifePlayer1:=50;
-					writeln('Seu  inimigo é ',inimigo[2]);
-					nomeInimigo:=inimigo[2];
-					writeln(inimigo[2],' está diante ',player1,' para o duelo');
-					resposta:=2;
-					CombatePvE;
-						repeat
-						while(repe<>1000) do
-						begin
-							repeat
-								//repe:=0;
-								clrscr;
-								writeln('Escolha qual carta usara:');
-								for l := 1 to 4 do													
-									for c:= 1 to 1 do 
-										begin
-											writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
-											writeln;
-										end;
-								readln(resposta);
-								if(resposta>4) then
-									begin
-										writeln('Comando invalido');
-										delay(2000);
-										//repe:=0;
-										teste:=0;	
-									end
-								else
-									teste:=1;
-							until  (teste=1);	
-								if(myDeck[resposta,c+3]='0')then
-									begin
-										for c:= 1 to 4 do 
-											myDeck[resposta,c]:=' ';
-											
-										writeln('Carta não esta disponivel');
-										delay(1500);
-										c:=1;
-										myDeck[resposta,c+3]:='0';
-										repe:=0;
-										
-									end
-							
-								else
-									begin
-										repe:=1000;
-										
-									end;											
+							//level 2
+							if(lifeEnemy<=0)then
+							begin
+								lifeEnemy:=50;
+								lifePlayer1:=50;
+								resposta:=1;
+								repe:=0;
+								resposta:=2;
+								writeln('Seu  inimigo é ',inimigo[resposta]);
+								CombatePvE;
+								writeln(nomeInimigo,' está diante ',player1,' para o duelo');
 								
-						end;
-									IA:=random(4)+1;
-									writeln(player1,' usou ',myDeck[resposta,c]);
-									writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
-									delay(2000);
-									DanoPVE;
-									clrscr;
-									writeln('Vida: ', player1,'/',lifePlayer1);
-									writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
-									delay(2000);
-									repe:=0;
-									if(lifePlayer1<=0) then
-										begin
-											writeln(player1,' est� morto(a)');
-											writeln('1 - Retorna ao menu');
-											writeln('2 - Tenta novamente');
-											readln(resposta);
-											if (resposta=1) then
-											goto menu;
-										end;
-									if(lifeEnemy<=0) then
-										begin
-											writeln(nomeInimigo,' est� morto(a)');
-											writeln('Avançando para proximo nivel');
-											delay(1500);
-										end;						
-									clrscr;
-					until (lifeEnemy<=0);
-				// level 3
-					if(lifeEnemy<=0) then
-					begin
-					lifeEnemy:=50;
-					lifePlayer1:=50;
-					writeln('Seu  inimigo é ',inimigo[3]);
-					nomeInimigo:=inimigo[3];
-					writeln(inimigo[3],' está diante ',player1,' para o duelo');
-					resposta:=3;
-					CombatePvE;
-						repeat
-						while(repe<>1000) do
-						begin
-							repeat
-								//repe:=0;
-								clrscr;
-								writeln('Escolha qual carta usara:');
-								for l := 1 to 4 do													
-									for c:= 1 to 1 do 
-										begin
-											writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
-											writeln;
-										end;
-								readln(resposta);
-								if(resposta>4) then
-									begin
-										writeln('Comando invalido');
-										delay(2000);
-										//repe:=0;
-										teste:=0;	
-									end
-								else
-									teste:=1;
-							until  (teste=1);	
-								if(myDeck[resposta,c+3]='0')then
-									begin
-										for c:= 1 to 4 do 
-											myDeck[resposta,c]:=' ';
-											
-										writeln('Carta não esta disponivel');
-										delay(1500);
-										c:=1;
-										myDeck[resposta,c+3]:='0';
-										repe:=0;
-										
-									end
-							
-								else
-									begin
-										repe:=1000;
-										
-									end;											
 								
-						end;
-									IA:=random(4)+1;
-									writeln(player1,' usou ',myDeck[resposta,c]);
-									writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
-									delay(2000);
-									DanoPVE;
-									clrscr;
-									writeln('Vida: ', player1,'/',lifePlayer1);
-									writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
-									delay(2000);
-									repe:=0;
-									if(lifePlayer1<=0) then
+									repeat
+										while(repe<>1000) do
 										begin
-											writeln(player1,' est� morto(a)');
-											writeln('1 - Retorna ao menu');
-											writeln('2 - Tenta novamente');
-											readln(resposta);
-											if (resposta=1) then
-											goto menu;
+											repeat
+												//repe:=0;
+												clrscr;
+												writeln('Escolha qual carta usara:');
+												for l := 1 to 4 do													
+													for c:= 1 to 1 do 
+														begin
+															writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
+															writeln;
+														end;
+												readln(resposta);
+												if(resposta>4) then
+													begin
+														writeln('Comando invalido');
+														delay(2000);
+														//repe:=0;
+														teste:=0;	
+													end
+												else
+													teste:=1;
+											until  (teste=1);	
+												if(myDeck[resposta,c+3]='0')then
+													begin
+														for c:= 1 to 4 do 
+															myDeck[resposta,c]:=' ';
+															
+														writeln('Carta não esta disponivel');
+														delay(1500);
+														c:=1;
+														myDeck[resposta,c+3]:='0';
+														repe:=0;
+														
+													end
+											
+												else
+													begin
+														repe:=1000;
+														
+													end;											
+												
 										end;
-									if(lifeEnemy<=0) then
-										begin
-											writeln(nomeInimigo,' est� morto(a)');
-											writeln('Avançando para proximo nivel');
-											delay(1500);
-										end;						
-									clrscr;
-					until (lifeEnemy<=0);
-				
+												IA:=random(4)+1;
+												writeln(player1,' usou ',myDeck[resposta,c]);
+												writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
+												delay(2000);
+												DanoPVE;
+												clrscr;
+												writeln('Vida: ', player1,'/',lifePlayer1);
+												writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+												delay(2000);
+												repe:=0;
+												if(lifePlayer1<=0) then
+													begin
+														writeln(player1,' est� morto(a)');
+														writeln('1 - Retorna ao menu');
+														writeln('2 - Tenta novamente');
+														readln(resposta);
+														if (resposta=1) then
+														goto menu;
+													end;
+												if(lifeEnemy<=0) then
+													begin
+														writeln(nomeInimigo,' est� morto(a)');
+														writeln('Avançando para proximo nivel');
+														delay(1500);
+													end;						
+												clrscr;
+								until (lifeEnemy<=0);
+								// level 3
+								if(lifeEnemy<=0) then
+								begin
+								lifeEnemy:=50;
+								lifePlayer1:=50;
+								resposta:=1;
+								repe:=0;
+								resposta:=3;
+								writeln('Seu  inimigo é ',inimigo[resposta]);
+								CombatePvE;
+								writeln(nomeInimigo,' está diante ',player1,' para o duelo');
+							
+								
+								repeat
+								while(repe<>1000) do
+									begin
+										repeat
+											//repe:=0;
+											clrscr;
+											writeln('Escolha qual carta usara:');
+											for l := 1 to 4 do													
+												for c:= 1 to 1 do 
+													begin
+														writeln(l,' - ',myDeck[l,c],' Dano: ',myDeck[l,c+1],' Efeito: ',myDeck[l,c+2],' Quantidade: ',myDeck[l,c+3]);	
+														writeln;
+													end;
+											readln(resposta);
+											if(resposta>4) then
+												begin
+													writeln('Comando invalido');
+													delay(2000);
+													//repe:=0;
+													teste:=0;	
+												end
+											else
+												teste:=1;
+										until  (teste=1);	
+											if(myDeck[resposta,c+3]='0')then
+												begin
+													for c:= 1 to 4 do 
+														myDeck[resposta,c]:=' ';
+														
+													writeln('Carta não esta disponivel');
+													delay(1500);
+													c:=1;
+													myDeck[resposta,c+3]:='0';
+													repe:=0;
+													
+												end
+										
+											else
+												begin
+													repe:=1000;
+													
+												end;											
+											
+									end;
+												IA:=random(4)+1;
+												writeln(player1,' usou ',myDeck[resposta,c]);
+												writeln(nomeInimigo,' usou ',deckInimigo[IA,c]);
+												delay(2000);
+												DanoPVE;
+												clrscr;
+												writeln('Vida: ', player1,'/',lifePlayer1);
+												writeln('Vida: ',nomeInimigo,'/',lifeEnemy);												
+												delay(2000);
+												repe:=0;
+												if(lifePlayer1<=0) then
+													begin
+														writeln(player1,' est� morto(a)');
+														writeln('1 - Retorna ao menu');
+														writeln('2 - Tenta novamente');
+														readln(resposta);
+														if (resposta=1) then
+														goto menu;
+													end;
+												if(lifeEnemy<=0) then
+													begin
+														writeln(nomeInimigo,' est� morto(a)');
+														writeln('Avançando para proximo nivel');
+														delay(1500);
+													end;						
+												clrscr;
+									until (lifeEnemy<=0);
+								end;
 					
 					
 					
-					end;
+					
 
 
 				end;		
-			end;
+		end;
 		//PVP e PVE
 		if(start=3) then
 			begin
